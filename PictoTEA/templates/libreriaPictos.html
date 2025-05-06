@@ -1,71 +1,127 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../static/globalsLibreriaPictos.css" />
-    <link rel="stylesheet" href="../static/styleLibreriaPictos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styleLibreriaPictos.css">
+    <title>LibreriaPictos</title>
   </head>
   <body>
-    <div class="desktop">
-      <div class="div">
-        <div class="overlap">
-          <div class="overlap">
-            <div class="overlap-group">
-              <img class="rectangle" src="img/rectangle-1.svg" />
-              <div class="text-wrapper">Pictos</div>
-              <div class="text-wrapper-2">PictoTEA</div>
-              <img class="home" src="img/home.svg" />
-              <img class="local-library" src="img/local-library.svg" />
-              <div class="text-wrapper-3">Pagina principal</div>
-              <img class="img" src="img/rectangle-15.svg" />
-              <img class="image" src="img/image-5.png" />
-            </div>
-            <div class="overlap-group-2">
-              <div class="text-wrapper-4">Libreria de pictos</div>
-              <div class="rectangle-2"></div>
-              <div class="rectangle-3"></div>
-              <div class="text-wrapper-5">Objeto</div>
-              <div class="rectangle-4"></div>
-              <div class="text-wrapper-6">Conocimiento</div>
-              <div class="rectangle-5"></div>
-              <div class="text-wrapper-7">Comunicacion</div>
-              <div class="rectangle-6"></div>
-              <div class="text-wrapper-8">Ocio</div>
-              <img class="rectangle-7" src="img/rectangle-8.svg" />
-              <div class="rectangle-8"></div>
-              <div class="text-wrapper-9">Ser vivo</div>
-              <div class="rectangle-9"></div>
-              <div class="text-wrapper-10">Lugar</div>
-              <div class="rectangle-10"></div>
-              <div class="text-wrapper-11">Tiempo</div>
-              <div class="rectangle-11"></div>
-              <div class="text-wrapper-12">Desplazamiento</div>
-            </div>
+    <div class="app-container">
+      <header class="main-header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" />
+        <h1 class="header-title">PictoTEA</h1>
+        <nav class="header-nav">
+          <a href="#" class="nav-link nav-link-home">
+            <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9928a729a9a3fc85557f2b51b31075fcddb7426f?placeholderIfAbsent=true" alt="" class="nav-icon" />
+            <span>Pagina principal</span>
+          </a>
+          <a href="#" class="nav-link nav-link-active">
+            <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="" class="nav-icon" />
+            <span>Pictos</span>
+          </a>
+        </nav>
+      </header>
+
+      <main class="main-content">
+        <h2 class="library-title">Libreria de pictos</h2>
+
+        <section class="categories-section">
+          <div class="category-row">
+            <button class="category-btn category-btn-active">
+              Alimentacion
+            </button>
+            <button class="category-btn">Ocio</button>
+            <button class="category-btn">Ser vivo</button>
+            <button class="category-btn">Lugar</button>
+            <button class="category-btn">Tiempo</button>
+            <button class="category-btn">Desplazamiento</button>
+            <button class="category-btn">Religion</button>
           </div>
-          <div class="div-wrapper"><div class="text-wrapper-13">Alimentacion</div></div>
-          <div class="overlap-2"><div class="text-wrapper-14">Trabajo</div></div>
-          <div class="overlap-3"><div class="text-wrapper-15">Religion</div></div>
-        </div>
-        <div class="overlap-4"><div class="text-wrapper-16">Cerrar sesión</div></div>
-        <div class="comer-wrapper"><img class="comer" src="img/comer-2.png" /></div>
-        <div class="image-wrapper"><img class="image-2" src="img/image-18.png" /></div>
-        <div class="img-wrapper"><img class="image-3" src="img/image-19.png" /></div>
-        <div class="overlap-5"><img class="image-4" src="img/image-26.png" /></div>
-        <div class="overlap-6"><img class="image-5" src="img/image-22.png" /></div>
-        <div class="overlap-7"><img class="image-6" src="img/image-23.png" /></div>
-        <div class="overlap-8"><img class="image-7" src="img/image-24.png" /></div>
-        <div class="overlap-9"><img class="image-8" src="img/image-25.png" /></div>
-        <div class="overlap-10"><img class="image-9" src="img/image-21.png" /></div>
-        <div class="overlap-11"><img class="image-10" src="img/image-20.png" /></div>
-        <div class="text-wrapper-17">Comer</div>
-        <div class="text-wrapper-18">Queso</div>
-        <div class="text-wrapper-19">Yogur</div>
-        <div class="overlap-12">
-          <div class="text-wrapper-20">Limon</div>
-          <img class="rectangle-12" src="img/rectangle-34.svg" />
-        </div>
-        <div class="text-wrapper-21">Fruta</div>
-      </div>
+          <div class="category-row category-row-secondary">
+            <button class="category-btn">Trabajo</button>
+            <button class="category-btn">Comunicacion</button>
+            <button class="category-btn">Objeto</button>
+            <button class="category-btn">Conocimiento</button>
+          </div>
+        </section>
+
+        <section class="picto-grid" aria-label="Grid de pictogramas">
+          <article class="picto-item">
+            <div class="picto-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true" alt="Pictograma de Comer" class="picto-image" />
+            </div>
+            <h3 class="picto-title">Comer</h3>
+            <div class="picto-image-container">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/edd5f563afe23b86557a441288bbba72e07812b7?placeholderIfAbsent=true"
+                alt="Pictograma alternativo de Comer"
+                class="picto-image"
+              />
+            </div>
+          </article>
+
+          <article class="picto-item">
+            <div class="picto-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/2211ad0cc1f16f1b89b016756065c6f768329164?placeholderIfAbsent=true" alt="Pictograma de Queso" class="picto-image" />
+            </div>
+            <h3 class="picto-title">Queso</h3>
+            <div class="picto-image-container">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/c39bcfd3004618592d3328a0d9da7ab46c07bbf9?placeholderIfAbsent=true"
+                alt="Pictograma alternativo de Queso"
+                class="picto-image"
+              />
+            </div>
+          </article>
+
+          <article class="picto-item">
+            <div class="picto-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/e973d65f61b139e7e2fb2d1482db6194fb801700?placeholderIfAbsent=true" alt="Pictograma de Yogur" class="picto-image" />
+            </div>
+            <h3 class="picto-title">Yogur</h3>
+            <div class="picto-image-container">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/b29d6a52207647a84542c31ff798a466c28ca08d?placeholderIfAbsent=true"
+                alt="Pictograma alternativo de Yogur"
+                class="picto-image"
+              />
+            </div>
+          </article>
+
+          <article class="picto-item">
+            <div class="picto-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/7da9231f34e567ab6ea2b204b3b1950adc185ff5?placeholderIfAbsent=true" alt="Pictograma de Fruta" class="picto-image" />
+            </div>
+            <h3 class="picto-title">Fruta</h3>
+            <div class="picto-image-container">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ae9c1b9f04144ba85ba321c17aa36b4e08a47bc2?placeholderIfAbsent=true"
+                alt="Pictograma alternativo de Fruta"
+                class="picto-image"
+              />
+            </div>
+          </article>
+
+          <article class="picto-item">
+            <div class="picto-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/05802bba3460988547ee6ac7a07ef68a31f95520?placeholderIfAbsent=true" alt="Pictograma de Limón" class="picto-image" />
+            </div>
+            <h3 class="picto-title">Limon</h3>
+            <div class="picto-image-container">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/e482e34b57748c909664c8d522ba6f919c89caf9?placeholderIfAbsent=true"
+                alt="Pictograma alternativo de Limón"
+                class="picto-image"
+              />
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <button class="logout-button">Cerrar sesión</button>
+      </footer>
     </div>
   </body>
 </html>

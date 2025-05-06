@@ -1,721 +1,231 @@
-.desktop {
-    background-color: #e3eaf4;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .desktop .div {
-    background-color: #e3eaf4;
-    overflow: hidden;
-    width: 1440px;
-    height: 1024px;
-    position: relative;
-  }
-  
-  .desktop .overlap {
-    position: absolute;
-    width: 1453px;
-    height: 492px;
-    top: 0;
-    left: 0;
-  }
-  
-  .desktop .overlap-group {
-    position: absolute;
-    width: 1453px;
-    height: 227px;
-    top: 0;
-    left: 0;
-  }
-  
-  .desktop .rectangle {
-    position: absolute;
-    width: 1440px;
-    height: 128px;
-    top: 0;
-    left: 0;
-  }
-  
-  .desktop .text-wrapper {
-    position: absolute;
-    width: 180px;
-    top: 53px;
-    left: 1273px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #07897e;
-    font-size: 32px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .text-wrapper-2 {
-    position: absolute;
-    width: 610px;
-    top: 30px;
-    left: 221px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 64px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .home {
-    position: absolute;
-    width: 43px;
-    height: 40px;
-    top: 54px;
-    left: 867px;
-  }
-  
-  .desktop .local-library {
-    position: absolute;
-    width: 163px;
-    height: 170px;
-    top: 57px;
-    left: 1214px;
-  }
-  
-  .desktop .text-wrapper-3 {
-    position: absolute;
-    width: 282px;
-    top: 53px;
-    left: 923px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 32px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .desktop .img {
-    position: absolute;
-    width: 10px;
-    height: 12px;
-    top: 55px;
-    left: 946px;
-  }
-  
-  .desktop .image {
-    position: absolute;
-    width: 115px;
-    height: 114px;
-    top: 3px;
-    left: 10px;
-  }
-  
-  .desktop .overlap-group-2 {
-    position: absolute;
-    width: 902px;
-    height: 269px;
-    top: 223px;
-    left: 267px;
-  }
-  
-  .desktop .text-wrapper-4 {
-    position: absolute;
-    width: 833px;
-    top: 0;
-    left: 61px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 96px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-2 {
-    position: absolute;
-    width: 49px;
-    height: 32px;
-    top: 11px;
-    left: 339px;
-    background-color: #e3eaf4;
-  }
-  
-  .desktop .rectangle-3 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 231px;
-    left: 185px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-5 {
-    position: absolute;
-    top: 234px;
-    left: 231px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-4 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 231px;
-    left: 370px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-6 {
-    position: absolute;
-    top: 235px;
-    left: 384px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-5 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 231px;
-    left: 1px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-7 {
-    position: absolute;
-    top: 234px;
-    left: 13px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-6 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 169px;
-    left: 0;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-8 {
-    position: absolute;
-    top: 172px;
-    left: 59px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-7 {
-    position: absolute;
-    width: 22px;
-    height: 25px;
-    top: 13px;
-    left: 377px;
-  }
-  
-  .desktop .rectangle-8 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 169px;
-    left: 185px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-9 {
-    position: absolute;
-    top: 172px;
-    left: 222px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-9 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 169px;
-    left: 370px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-10 {
-    position: absolute;
-    top: 172px;
-    left: 420px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-10 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 169px;
-    left: 555px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-11 {
-    position: absolute;
-    top: 172px;
-    left: 600px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-11 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 169px;
-    left: 740px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-12 {
-    position: absolute;
-    top: 175px;
-    left: 753px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .div-wrapper {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 392px;
-    left: 82px;
-    background-color: #f4d352;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-13 {
-    position: absolute;
-    top: 2px;
-    left: 14px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .overlap-2 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 454px;
-    left: 82px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-14 {
-    position: absolute;
-    top: 2px;
-    left: 37px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .overlap-3 {
-    position: absolute;
-    width: 162px;
-    height: 38px;
-    top: 392px;
-    left: 1192px;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .desktop .text-wrapper-15 {
-    position: absolute;
-    top: 2px;
-    left: 40px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 24px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .overlap-4 {
-    position: absolute;
-    width: 1440px;
-    height: 78px;
-    top: 946px;
-    left: 0;
-    background-image: url(./img/rectangle-12.svg);
-    background-size: 100% 100%;
-  }
-  
-  .desktop .text-wrapper-16 {
-    position: absolute;
-    top: 23px;
-    left: 1250px;
-    font-family: "Inter-LightItalic", Helvetica;
-    font-weight: 300;
-    font-style: italic;
-    color: #000000;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .comer-wrapper {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 512px;
-    left: 160px;
-    background-color: #65a197;
-    border-radius: 7px;
-  }
-  
-  .desktop .comer {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 5px;
-    left: 18px;
-    object-fit: cover;
-  }
-  
-  .desktop .image-wrapper {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 512px;
-    left: 382px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-2 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 12px;
-    left: 18px;
-    object-fit: cover;
-  }
-  
-  .desktop .img-wrapper {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 517px;
-    left: 612px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-3 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 11px;
-    left: 18px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-5 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 752px;
-    left: 1080px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-4 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 9px;
-    left: 15px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-6 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 752px;
-    left: 160px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-5 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 9px;
-    left: 18px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-7 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 752px;
-    left: 390px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-6 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 10px;
-    left: 10px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-8 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 752px;
-    left: 623px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-7 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 10px;
-    left: 17px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-9 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 752px;
-    left: 854px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-8 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 9px;
-    left: 20px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-10 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 523px;
-    left: 1076px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-9 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 1px;
-    left: 19px;
-    object-fit: cover;
-  }
-  
-  .desktop .overlap-11 {
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    top: 520px;
-    left: 854px;
-    background-color: #65a196;
-    border-radius: 7px;
-  }
-  
-  .desktop .image-10 {
-    position: absolute;
-    width: 163px;
-    height: 163px;
-    top: 8px;
-    left: 16px;
-    object-fit: cover;
-  }
-  
-  .desktop .text-wrapper-17 {
-    position: absolute;
-    top: 699px;
-    left: 207px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .text-wrapper-18 {
-    position: absolute;
-    top: 696px;
-    left: 430px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .text-wrapper-19 {
-    position: absolute;
-    top: 706px;
-    left: 674px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .overlap-12 {
-    position: absolute;
-    width: 88px;
-    height: 45px;
-    top: 706px;
-    left: 1131px;
-  }
-  
-  .desktop .text-wrapper-20 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .desktop .rectangle-12 {
-    position: absolute;
-    width: 12px;
-    height: 14px;
-    top: 1px;
-    left: 60px;
-  }
-  
-  .desktop .text-wrapper-21 {
-    position: absolute;
-    top: 706px;
-    left: 912px;
-    font-family: "Jua-Regular", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
+.app-container {
+  background-color: rgba(227, 234, 244, 1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.main-header {
+  background-color: rgba(245, 245, 245, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  display: flex;
+  width: 100%;
+  padding: 3px 80px 11px 10px;
+  align-items: center;
+  gap: 40px 78px;
+  font-family:
+    Jua,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.header-logo {
+  aspect-ratio: 1.01;
+  object-fit: contain;
+  width: 115px;
+  border-radius: 138px;
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-size: 64px;
+  text-align: center;
+  margin: auto 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 237px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link-active {
+  color: rgba(7, 138, 127, 1);
+}
+
+.nav-icon {
+  width: 43px;
+  height: auto;
+  object-fit: contain;
+}
+
+.main-content {
+  display: flex;
+  margin-top: 96px;
+  width: 100%;
+  padding: 0 80px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.library-title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 96px;
+  font-family:
+    Jua,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.categories-section {
+  margin-top: 77px;
+}
+
+.category-row {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  font-family:
+    Jua,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.category-row-secondary {
+  margin-top: 24px;
+}
+
+.category-btn {
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 4px 40px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-btn-active {
+  background-color: rgba(244, 212, 83, 1);
+}
+
+.picto-grid {
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1120px;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.picto-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.picto-image-container {
+  border-radius: 7px;
+  background-color: rgba(101, 161, 150, 1);
+  padding: 9px 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.picto-image {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 163px;
+}
+
+.picto-title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 36px;
+  font-family:
+    Jua,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.main-footer {
+  margin-top: 14px;
+  width: 100%;
+}
+
+.logout-button {
+  background-color: rgba(245, 245, 245, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  width: 100%;
+  padding: 25px 70px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 300;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .main-header {
+    padding-right: 20px;
+  }
+
+  .header-title {
+    font-size: 40px;
+  }
+
+  .main-content {
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .library-title {
+    font-size: 40px;
+    max-width: 100%;
+  }
+
+  .categories-section {
+    margin-top: 40px;
+  }
+
+  .category-btn {
+    padding: 4px 20px;
+    white-space: normal;
+  }
+
+  .picto-grid {
+    max-width: 100%;
+  }
+
+  .logout-button {
+    padding: 25px 20px;
+  }
+}

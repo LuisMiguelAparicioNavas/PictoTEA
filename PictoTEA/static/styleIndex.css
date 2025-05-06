@@ -1,4 +1,20 @@
 /* Base styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 100%;       /* 1rem = 16px por defecto */
+  line-height: 1.5;
+}
+
+html, body {
+  height: 100%;
+}
+
+
 :root {
   --background-color: rgba(227, 234, 244, 1);
   --surface-color: rgba(245, 245, 245, 1);
@@ -10,14 +26,14 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--background-color);
-  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* distribuye encabezado, contenido y pie */
   min-height: 100vh;
+  height: 100vh; /* fuerza la altura a ocupar todo el viewport */
+  overflow: hidden; /* evita scroll innecesario */
 }
+
 
 /* Header styles */
 .app-header {
@@ -81,19 +97,16 @@ body {
 /* Main content styles */
 .main-content {
   flex-grow: 1;
-  padding: 28px 23px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  overflow-y: auto; /* si el contenido real se desborda, aún puede hacer scroll */
 }
 
+/* 3) Sección de frases: full width con un máximo */
 .phrases-section {
-  width: 100%;
-  max-width: 1224px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 100%;
 }
+
 
 .phrases-title {
   z-index: 10;
@@ -110,40 +123,52 @@ body {
 }
 
 .question-title {
-  color: var(--text-color);
-  font-size: 96px;
+  font-size: clamp(2rem, 5vw, 6rem);
   font-family: Jua, sans-serif;
+  color: var(--text-color);
   text-align: center;
-  margin: 22px 0 0 124px;
+  margin: 1.5rem auto 0;   /* centrado horizontal con auto */
 }
 
+/* 5) .phrase-display: full width, max-width, centrado, paddings en rem */
 .phrase-display {
-  border-radius: 71px;
+  width: 100%;
+  max-width: 68.5rem;      /* ≈ 1095px */
+  margin: 2.5rem auto 0;    /* 41px arriba, auto centrar */
+  padding: 1.75rem 1rem;    /* top/bottom y laterales adaptados */
+  border-radius: 4.5rem;    /* 71px → 4.5rem */
   background-color: var(--surface-color);
   box-shadow: var(--shadow);
   display: flex;
-  margin-top: 41px;
-  width: 1095px;
-  max-width: 100%;
-  padding: 28px 17px 18px 41px;
-  align-items: stretch;
-  gap: 20px;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
+  gap: 1.25rem;             /* 20px */
+}
+
+/* 6) Frase actual: tipografía fluida y sin margen lateral fijo */
+.current-phrase {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 700;
+  font-family: Inter, sans-serif;
+  margin: 0;                /* elimina “auto 0” innecesario */
+  flex: 1 1 auto;           /* permite crecer y encoger */
+  min-width: 0;             /* evita overflow en flex */
+}
+
+/* 7) Acciones: siempre abajo en móviles, al lado en desktop */
+.phrase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: flex-end;
 }
 
 .current-phrase {
-  color: var(--text-color);
-  font-size: 32px;
-  font-family: Inter, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  /* Antes: font-size: 32px; */
   font-weight: 700;
   margin: auto 0;
-}
-
-.phrase-actions {
-  display: flex;
-  align-items: stretch;
-  gap: 22px;
 }
 
 .action-icon {
@@ -162,10 +187,15 @@ body {
 
 /* Word cards section */
 .word-cards {
-  margin: 79px 0 0 59px;
-  width: 458px;
+  margin: 1.5rem auto 0;
+  width: 100%;
   max-width: 100%;
 }
+
+.add-button {
+  margin: 1.5rem auto;
+}
+
 
 .word-cards-container {
   display: flex;
@@ -255,59 +285,56 @@ body {
   cursor: pointer;
 }
 
-/* Responsive styles */
-@media (max-width: 991px) {
-  .app-header {
-    padding-right: 20px;
-  }
+/* Estilos base (para pantallas grandes) */
+.columna {
+  width: 33.33%; /* 33.33% de ancho en pantallas grandes */
+  float: left; /* Flotante a la izquierda */
+}
 
-  .app-title {
-    font-size: 40px;
-  }
-
-  .main-nav {
-    max-width: 100%;
-  }
-
-  .phrases-title {
-    padding: 0 20px;
-  }
-
-  .question-title {
-    font-size: 40px;
-    max-width: 100%;
-  }
-
+/* Media Query para pantallas pequeñas */
+@media screen and (min-width: 768px) {
   .phrase-display {
-    padding-left: 20px;
+    padding: 2rem 3rem;
+    gap: 2rem;
+    justify-content: space-between;
   }
 
-  .word-cards {
-    margin-top: 40px;
+  .current-phrase {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+
+  .phrase-actions {
+    justify-content: flex-end;
   }
 
   .word-cards-container {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 68rem;
+    margin: 2rem auto 0;
   }
 
   .word-card {
-    width: 100%;
-  }
-
-  .word-card-content {
-    margin-top: 40px;
+    flex: 1 1 12rem; /* se adapta a distintos anchos */
+    max-width: 16rem;
   }
 
   .add-button {
-    padding: 20px;
-    margin-top: 40px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
   }
+}
 
-  .add-button-text {
-    font-size: 40px;
+
+@media (max-width: 600px) {
+  .phrase-display {
+    flex-direction: column;
+    padding: 1rem;
   }
-
-  .logout-button {
-    padding: 20px;
+  .phrase-actions {
+    margin-top: 1rem;
   }
 }
