@@ -1,62 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styleIndex.css">
-    <title>PictoTEA</title>
-</head>
-<body>
-  <header class="app-header">
-    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/457fa967093b92407aaa13268b7d397b963dcbce?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="PictoTEA Logo" class="app-logo" />
-  <h1 class="app-title">PictoTEA</h1>
-  <nav class="main-nav">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Home Icon" class="nav-icon" />
-      <a href="#" class="nav-link nav-link-home">Pagina principal</a>
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Pictos Icon" class="nav-icon" />
-      <a href="#" class="nav-link">Pictos</a>
-  </nav>
-</header>
+<!doctype html> <html lang="es"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>PictoTEA - Página Principal</title> 
+  <link rel="stylesheet" href="../static/styleIndex.css">
+</head> 
 
-<main class="main-content">
-  <section class="phrases-section">
-      <h2 class="phrases-title">Tus frases</h2>
-      <h3 class="question-title">¿Que quieres decir?</h3>
+<body> 
+  <div class="desktop-container"> 
+  <header class="main-header"> 
+    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title">PictoTEA</h1> <nav class="header-nav"> 
+    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="#" class="nav-link nav-link-active">Pagina principal</a> 
+    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="#" class="nav-link">Pictos</a> </nav> 
+  </header>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="phrases-tag">Tus frases</div>
+      <h2 class="main-question">¿Que quieres decir?</h2>
 
       <div class="phrase-display">
-        <p class="current-phrase">Quiero Comer</p>
-      <div class="phrase-actions">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c3b5fdf1c90396ca48910c7f4d39f6b11fe1c456?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Action Icon 1" class="action-icon" />
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/35e8cd3fab0d131bb733ee38267276ce67c316ce?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Action Icon 2" class="action-icon-large" />
-      </div>
-    </div>
-
-      <section class="word-cards" data-el="div-1">
-        <div class="word-cards-container">
-          <article class="word-card">
-            <div class="word-card-content">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca6493e3da8529ecb84697c3096eb4be87d9a89a?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Quiero Icon" class="word-image" />
-              <p class="word-text">Quiero</p>
-            </div>
-      </article>
-          <article class="word-card">
-            <div class="word-card-content word-card-content-active">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1bfcb48f8f20a05af98ef7dabc8cc8121d0a77e4?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Comer Icon" class="word-image" />
-              <p class="word-text">Comer</p>
+        <span class="phrase-text">Quiero Comer</span>
+        <div class="phrase-icons">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/87e701f195307c11441130acc4d4053b3a23a325?placeholderIfAbsent=true"
+            alt="Editar frase"
+            class="action-icon"
+          />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/35e8cd3fab0d131bb733ee38267276ce67c316ce?placeholderIfAbsent=true"
+            alt="Eliminar frase"
+            class="action-icon-large"
+          />
         </div>
-      </article>
+      </div>
+
+      <div class="pictogram-grid">
+        <div class="pictogram-column">
+          <div class="pictogram-container">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/97836f576dc190552b5268a609f684f1af8ba629?placeholderIfAbsent=true"
+              alt="Pictograma quiero"
+              class="pictogram-image"
+            />
+            <span class="pictogram-text">Quiero</span>
+          </div>
+        </div>
+        <div class="pictogram-column">
+          <div class="pictogram-container highlighted">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true"
+              alt="Pictograma comer"
+              class="pictogram-image"
+            />
+            <span class="pictogram-text">Comer</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="add-button">
+        <span class="add-text">Añadir</span>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/1b26a2036eddc01c7085a3aefaf2eca7b6f9ef4a?placeholderIfAbsent=true"
+          alt="Añadir pictograma"
+          class="add-icon"
+        />
+      </button>
     </div>
-      </section>
+  </main>
 
-    <button class="add-button">
-        <span class="add-button-text">Añadir</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0998c952f9d4f1c368ffa4d6ab7d885786255766?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" alt="Add Icon" class="add-icon" />
-    </button>
-  </section>
-</main>
-
-  <footer class="app-footer">
-  <button class="logout-button">Cerrar sesión</button>
-</footer>
-</body>
-</html>
+  <footer class="main-footer">
+    <a href="#" class="logout-link">Cerrar sesión</a>
+  </footer>
+</div>
+</body> </html>
