@@ -2,70 +2,79 @@
 <head> 
   <meta charset="UTF-8" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>PictoTEA - Página Principal</title> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/styleIndex.css">
 </head> 
 
 <body> 
   <div class="desktop-container"> 
   <header class="main-header"> 
-    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title">PictoTEA</h1> <nav class="header-nav"> 
-    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="#" class="nav-link nav-link-active">Pagina principal</a> 
+    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
+    <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="#" class="nav-link nav-link-active">Página principal</a> 
     <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="#" class="nav-link">Pictos</a> </nav> 
   </header>
 
   <main class="main-content">
     <div class="content-wrapper">
-      <div class="phrases-tag">Tus frases</div>
-      <h2 class="main-question">¿Que quieres decir?</h2>
+      <button class="phrases-tag">Tus frases</button>
+      <h2 class="main-question">¿Qué quieres decir?</h2>
 
       <div class="phrase-display">
-        <span class="phrase-text">Quiero Comer</span>
-        <div class="phrase-icons">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/87e701f195307c11441130acc4d4053b3a23a325?placeholderIfAbsent=true"
-            alt="Editar frase"
-            class="action-icon"
-          />
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/35e8cd3fab0d131bb733ee38267276ce67c316ce?placeholderIfAbsent=true"
-            alt="Eliminar frase"
-            class="action-icon-large"
-          />
+        <div class="phrase-input">
+          <input type="text" name="traduccion" placeholder="Quiero comer" style="flex-grow: 1; border: none; outline: none; padding: 8px;">
+          <div class="search-actions">
+            <button class="button-busqueda">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/87e701f195307c11441130acc4d4053b3a23a325?placeholderIfAbsent=true"
+                alt="Buscar"
+                class="action-icon search-icon"
+              />
+            </button>
+            <button class="button-busqueda">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/35e8cd3fab0d131bb733ee38267276ce67c316ce?placeholderIfAbsent=true"
+                alt="Hablar"
+                class="action-icon-large search-icon"
+              />
+            </button>
+          </div>
         </div>
       </div>
 
       <div class="pictogram-grid">
-        <div class="pictogram-column">
-          <div class="pictogram-container">
+        <div class = "cuadrado-verde">
+          <div class="pictogram-column">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/97836f576dc190552b5268a609f684f1af8ba629?placeholderIfAbsent=true"
+              src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/cafcb5f1a8812d92bbd00cee5967862074b3b72d?placeholderIfAbsent=true"
               alt="Pictograma quiero"
               class="pictogram-image"
             />
-            <span class="pictogram-text">Quiero</span>
           </div>
+          <div class="pictogram-text">Quiero</div>
         </div>
-        <div class="pictogram-column">
-          <div class="pictogram-container highlighted">
+
+        <div class = "cuadrado-verde">
+          <div class="pictogram-column">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true"
               alt="Pictograma comer"
               class="pictogram-image"
             />
-            <span class="pictogram-text">Comer</span>
           </div>
+          <div class="pictogram-text">Comer</div>
         </div>
-      </div>
-
-      <button class="add-button">
-        <span class="add-text">Añadir</span>
-        <img
+    </div>
+    
+    <div class = "add-wrapper">
+        <button class="add-button">
+          <span class="add-text">Añadir</span>
+          <img
           src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/1b26a2036eddc01c7085a3aefaf2eca7b6f9ef4a?placeholderIfAbsent=true"
           alt="Añadir pictograma"
           class="add-icon"
-        />
-      </button>
-    </div>
+          />
+        </button>
+      </div>
   </main>
 
   <footer class="main-footer">
