@@ -1,3 +1,5 @@
+
+
 /* Reset and base styles */
 *{ 
     margin: 0; 
@@ -36,10 +38,23 @@ body {
     border-radius: 50%; 
 }
 
+.logout-link{
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 .header-title { 
     font-family: "Jua", sans-serif; 
     font-size: 64px; 
     margin: 0 auto; 
+}
+
+
+.nav-icon {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
 }
 
 .header-nav { 
@@ -282,6 +297,7 @@ body {
   padding: 10px; /*  Espacio interior */
   border: 1px solid gray; /*  Borde opcional */
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 991px) {

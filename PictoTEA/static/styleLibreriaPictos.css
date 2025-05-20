@@ -5,19 +5,23 @@
   flex-direction: column; 
 }
 
-.main-header {
-  background-color: rgba(245, 245, 245, 1);
-  border: 1px solid rgba(0, 0, 0, 1);
-  display: flex;
-  width: 100%;
-  padding: 3px 80px 11px 10px;
-  align-items: center;
-  gap: 40px 78px;
-  font-family: Jua, sans-serif;
-  font-weight: bold;
-  font-size: 32px;
-  color: rgba(0, 0, 0, 1);
+.main-header { 
+    background-color: #F5F5F5; 
+    border-bottom: 1px solid #000; 
+    display: flex; 
+    align-items: center;
+    font-weight: bold;
+    font-family: Jua, sans-serif; 
+    padding: 10px 40px; 
+    gap: 60px; 
 }
+
+.logout-link{
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 
 .header-logo { 
     width: 115px; 
@@ -25,19 +29,16 @@
     border-radius: 50%; 
 }
 
-.header-title {
-  font-size: 64px;
-  text-align: center;
-  margin: auto 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  width: 237px;
+.header-title { 
+    font-family: "Jua", sans-serif; 
+    font-size: 64px; 
+    margin: 0 auto; 
 }
 
-.header-nav {
-  display: flex;
-  gap: 40px;
-  align-items: center;
+.header-nav { 
+    display: flex; 
+    align-items: center; 
+    gap: 40px; 
 }
 
 .nav-link { 
@@ -50,19 +51,16 @@
     color: #078A7F; 
 }
 
-.nav-link-active {
-  color: rgba(7, 138, 127, 1);
-}
-
 .nav-icon {
   width: 43px;
-  height: auto;
+  height: 43px;
   object-fit: contain;
 }
 
 .main-content {
+  flex:1;
   display: flex;
-  margin-top: 96px;
+  margin-top: 20px;
   width: 100%;
   padding: 0 80px;
   flex-direction: column;
@@ -71,38 +69,59 @@
 
 .library-title {
   color: rgba(0, 0, 0, 1);
-  font-size: 96px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-size: 55px;
+  font-family: Jua, sans-serif;
+  font-weight: bold; 
   text-align: center;
-  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.categories-section{
+  padding-left: 75px;
+}
+/* Oculta los inputs, que solo sirven para estado */
+/* 1) Oculta los radios (solo necesitamos su estado) */
+.categories-section input[type="radio"] {
+  position: absolute;  /* evitan el flujo */
+  opacity: 0;          /* invisibles */
+  pointer-events: none;
 }
 
-.categories-section {
-  margin-top: 77px;
+/* 2) Estilos base de los “botones” (labels) */
+.category-btn {
+  display: inline-block;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  padding: 4px 40px;
+  font-family: Jua, sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
 }
+
+/* 3) Cuando el input está checked, pinta el label adyacente */
+.categories-section input[type="radio"]:checked + .category-btn {
+  background-color: rgba(244, 212, 83, 1);
+}
+
+
 
 .category-row {
   display: flex;
   align-items: stretch;
   gap: 20px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Jua, sans-serif;
   font-size: 24px;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .category-row-secondary {
-  margin-top: 24px;
+  margin-top: 15px;
+}
+
+.category-row-secondary .category-btn {
+  margin-right: 10px;   /* ajusta este valor al espacio que quieras */
 }
 
 .category-btn {
@@ -136,7 +155,8 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-  min-width: 200px;
+  height: 50px;
+  width: 50px;
 }
 
 .picto-image-container {
@@ -156,37 +176,19 @@
 
 .picto-title {
   color: rgba(0, 0, 0, 1);
-  font-size: 36px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-size: 25px;
+  font-family: Jua, sans-serif;
+  font-weight: bold;
   text-align: center;
   margin: 8px 0;
 }
 
-.main-footer {
-  margin-top: 14px;
-  width: 100%;
-}
-
-.logout-button {
-  background-color: rgba(245, 245, 245, 1);
-  border: 1px solid rgba(0, 0, 0, 1);
-  width: 100%;
-  padding: 25px 70px;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 24px;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 300;
-  cursor: pointer;
+.main-footer { 
+    background: #F5F5F5; 
+    border-top: 1px solid #000; 
+    padding: 25px 0; 
+    text-align: right; 
+    padding-right: 40px;
 }
 
 @media (max-width: 991px) {
@@ -198,9 +200,11 @@
     font-size: 40px;
   }
 
-  .main-content {
-    padding: 20px;
-    margin-top: 40px;
+  .main-content { 
+    flex: 1; 
+    padding: 10px 0; 
+    display: flex; 
+    justify-content: center; 
   }
 
   .library-title {

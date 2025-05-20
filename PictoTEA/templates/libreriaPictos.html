@@ -3,39 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styleLibreriaPictos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styleLibreriaPictos.css">
     <title>LibreriaPictos</title>
   </head>
   <body>
     <div class="desktop-container"> 
       <header class="main-header"> 
-        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
-        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link nav-link-active">Página principal</a> 
-        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link">Pictos</a> </nav> 
-      </header>
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a>       
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link nav-link-active">Pictos</a> </nav> 
+    </header>
 
       <main class="main-content">
         <h2 class="library-title">Libreria de pictos</h2>
 
         <section class="categories-section">
           <div class="category-row">
-            <button class="category-btn category-btn-active">
-              Alimentacion
-            </button>
-            <button class="category-btn">Ocio</button>
-            <button class="category-btn">Ser vivo</button>
-            <button class="category-btn">Lugar</button>
-            <button class="category-btn">Tiempo</button>
-            <button class="category-btn">Desplazamiento</button>
-            <button class="category-btn">Religion</button>
-          </div>
-          <div class="category-row category-row-secondary">
-            <button class="category-btn">Trabajo</button>
-            <button class="category-btn">Comunicacion</button>
-            <button class="category-btn">Objeto</button>
-            <button class="category-btn">Conocimiento</button>
-          </div>
+        <input type="radio" id="cat-alimentacion" name="category">
+        <label for="cat-alimentacion" class="category-btn">Alimentacion</label>
+
+        <input type="radio" id="cat-ocio" name="category">
+        <label for="cat-ocio" class="category-btn">Ocio</label>
+
+        <input type="radio" id="cat-ser-vivo" name="category">
+        <label for="cat-ser-vivo" class="category-btn">Ser vivo</label>
+
+        <input type="radio" id="cat-lugar" name="category">
+        <label for="cat-lugar" class="category-btn">Lugar</label>
+
+        <input type="radio" id="cat-tiempo" name="category">
+        <label for="cat-tiempo" class="category-btn">Tiempo</label>
+
+        <input type="radio" id="cat-desplazamiento" name="category">
+        <label for="cat-desplazamiento" class="category-btn">Desplazamiento</label>
+
+        <input type="radio" id="cat-religion" name="category">
+        <label for="cat-religion" class="category-btn">Religion</label>
+      </div>
+
+      <div class="category-row category-row-secondary">
+        <input type="radio" id="cat-trabajo" name="category">
+        <label for="cat-trabajo" class="category-btn">Trabajo</label>
+
+        <input type="radio" id="cat-comunicacion" name="category">
+        <label for="cat-comunicacion" class="category-btn">Comunicacion</label>
+
+        <input type="radio" id="cat-objeto" name="category">
+        <label for="cat-objeto" class="category-btn">Objeto</label>
+
+        <input type="radio" id="cat-conocimiento" name="category">
+        <label for="cat-conocimiento" class="category-btn">Conocimiento</label>
+      </div>
         </section>
 
         <section class="picto-grid" aria-label="Grid de pictogramas">
@@ -112,8 +131,9 @@
       </main>
 
       <footer class="main-footer">
-        <button class="logout-button">Cerrar sesión</button>
-      </footer>
+        <a href="login.html" class="logout-link">Cerrar sesión</a>
+    </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </body>
 </html>
