@@ -1,8 +1,8 @@
-.app-container {
-  background-color: rgba(227, 234, 244, 1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  min-height: 100vh;
-  overflow: hidden;
+.desktop-container { 
+  background-color: #E3EAF4; 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 .main-header {
@@ -13,22 +13,16 @@
   padding: 3px 80px 11px 10px;
   align-items: center;
   gap: 40px 78px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: Jua, sans-serif;
+  font-weight: bold;
   font-size: 32px;
   color: rgba(0, 0, 0, 1);
 }
 
-.header-logo {
-  aspect-ratio: 1.01;
-  object-fit: contain;
-  width: 115px;
-  border-radius: 138px;
-  flex-shrink: 0;
+.header-logo { 
+    width: 115px; 
+    height: 115px; 
+    border-radius: 50%; 
 }
 
 .header-title {
@@ -46,12 +40,14 @@
   align-items: center;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  text-decoration: none;
-  color: inherit;
+.nav-link { 
+    font-size: 32px; 
+    text-decoration: none; 
+    color: #000; 
+}
+
+.nav-link-active { 
+    color: #078A7F; 
 }
 
 .nav-link-active {
