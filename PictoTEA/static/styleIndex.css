@@ -1,340 +1,292 @@
-/* Base styles */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Reset and base styles */
+*{ 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
-html {
-  font-size: 100%;       /* 1rem = 16px por defecto */
-  line-height: 1.5;
-}
-
-html, body {
-  height: 100%;
+body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Inter", sans-serif; 
 }
 
-
-:root {
-  --background-color: rgba(227, 234, 244, 1);
-  --surface-color: rgba(245, 245, 245, 1);
-  --primary-color: rgba(7, 138, 127, 1);
-  --active-card-color: rgba(101, 161, 151, 1);
-  --text-color: rgba(0, 0, 0, 1);
-  --shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  --border-color: rgba(0, 0, 0, 1);
+/* Main container */
+.desktop-container { 
+    background-color: #E3EAF4; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
 }
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* distribuye encabezado, contenido y pie */
-  min-height: 100vh;
-  height: 100vh; /* fuerza la altura a ocupar todo el viewport */
-  overflow: hidden; /* evita scroll innecesario */
-}
-
 
 /* Header styles */
-.app-header {
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  display: flex;
-  width: 100%;
-  padding: 4px 80px 10px 2px;
-  align-items: center;
-  gap: 40px 100px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  flex-wrap: wrap;
+.main-header { 
+    background-color: #F5F5F5; 
+    border-bottom: 1px solid #000; 
+    display: flex; 
+    align-items: center;
+    font-weight: bold;
+    font-family: Jua, sans-serif; 
+    padding: 10px 40px; 
+    gap: 60px; 
 }
 
-.app-logo {
-  aspect-ratio: 1.01;
-  object-fit: contain;
-  width: 115px;
-  border-radius: 138px;
-  align-self: stretch;
+.header-logo { 
+    width: 115px; 
+    height: 115px; 
+    border-radius: 50%; 
 }
 
-.app-title {
-  color: var(--text-color);
-  font-size: 64px;
-  text-align: center;
-  margin: auto 0;
-  flex-grow: 1;
-  width: 237px;
+.header-title { 
+    font-family: "Jua", sans-serif; 
+    font-size: 64px; 
+    margin: 0 auto; 
 }
 
-.main-nav {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  align-items: start;
-  gap: 23px;
-  font-size: 32px;
+.header-nav { 
+    display: flex; 
+    align-items: center; 
+    gap: 40px; 
 }
 
-.nav-icon {
-  width: 43px;
-  aspect-ratio: 1.08;
-  object-fit: contain;
+.nav-link { 
+    font-size: 32px; 
+    text-decoration: none; 
+    color: #000; 
 }
 
-.nav-link {
-  text-decoration: none;
-  color: var(--text-color);
+.nav-link-active { 
+    color: #078A7F; 
 }
 
-.nav-link-home {
-  color: var(--primary-color);
+/* Main content */
+.main-content { 
+    flex: 1; 
+    padding: 10px 0; 
+    display: flex; 
+    justify-content: center; 
 }
 
-/* Main content styles */
-.main-content {
-  flex-grow: 1;
-  overflow-y: auto; /* si el contenido real se desborda, aún puede hacer scroll */
+.content-wrapper {
+    height: 100; 
+    width: 1200px; 
+    padding: 10px 20px; 
 }
 
-/* 3) Sección de frases: full width con un máximo */
-.phrases-section {
-  flex-grow: 1;
-  overflow-y: auto;
-  max-height: 100%;
+.phrases-tag { 
+    background: #F5F5F5; 
+    border-radius: 71px; 
+    padding: 5px 40px; 
+    font-size: 25px;
+    font-weight: bold ; 
+    margin-left: 1000px;
+    width: 250px;
+    height: 50px; 
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    text-align: center; 
 }
 
-
-.phrases-title {
-  z-index: 10;
-  border-radius: 71px;
-  background-color: var(--surface-color);
-  box-shadow: var(--shadow);
-  padding: 0 44px 17px;
-  font-family: Jua, sans-serif;
-  font-size: 32px;
-  color: var(--text-color);
-  text-align: center;
-  align-self: flex-end;
-  margin: 0;
+.main-question { 
+    font-size: 50px; 
+    margin: 30px 0 0 60px; 
 }
 
-.question-title {
-  font-size: clamp(2rem, 5vw, 6rem);
-  font-family: Jua, sans-serif;
-  color: var(--text-color);
-  text-align: center;
-  margin: 1.5rem auto 0;   /* centrado horizontal con auto */
+/* Phrase display */
+.phrase-display { 
+    background: #F5F5F5; 
+    border-radius: 71px; 
+    padding: 25px 40px; 
+    margin: 40px 60px -25px; 
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 75px;  
+    display: flex;
 }
 
-/* 5) .phrase-display: full width, max-width, centrado, paddings en rem */
-.phrase-display {
-  width: 100%;
-  max-width: 68.5rem;      /* ≈ 1095px */
-  margin: 2.5rem auto 0;    /* 41px arriba, auto centrar */
-  padding: 1.75rem 1rem;    /* top/bottom y laterales adaptados */
-  border-radius: 4.5rem;    /* 71px → 4.5rem */
-  background-color: var(--surface-color);
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;             /* 20px */
+.phrase-input{
+    input[type="text"],
+    textarea {
+        border: none;
+        background: #F5F5F5; 
+        outline: none;
+    }
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    padding-right: 135px; 
 }
 
-/* 6) Frase actual: tipografía fluida y sin margen lateral fijo */
-.current-phrase {
-  font-size: clamp(1rem, 2.5vw, 2rem);
-  font-weight: 700;
-  font-family: Inter, sans-serif;
-  margin: 0;                /* elimina “auto 0” innecesario */
-  flex: 1 1 auto;           /* permite crecer y encoger */
-  min-width: 0;             /* evita overflow en flex */
+.phrase-input input[type="text"] {
+  flex-grow: 1; /* El input ocupa el espacio restante */
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 850px;
 }
 
-/* 7) Acciones: siempre abajo en móviles, al lado en desktop */
-.phrase-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: flex-end;
+.search-actions {
+  position: absolute; /* Posiciona las acciones relativamente al .phrase-input */
+  top: 50%; /* Centra verticalmente */
+  right: 10px; /* Ajusta la distancia desde la derecha */
+  transform: translateY(-50%); /* Ajusta el centrado vertical */
+  display: flex; /* Para alinear los botones horizontalmente */
+  align-items: center; /* Centrar verticalmente los botones entre sí */
 }
 
-.current-phrase {
-  font-size: clamp(1rem, 2.5vw, 2rem);
-  /* Antes: font-size: 32px; */
-  font-weight: 700;
-  margin: auto 0;
+.search-actions button.button-busqueda {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 10px; /* Espacio entre los botones */
+  font: inherit;
+  cursor: pointer;
+  outline: none;
 }
 
-.action-icon {
-  width: 69px;
-  aspect-ratio: 1;
-  object-fit: contain;
-  align-self: start;
-  margin-top: 8px;
+.search-actions button.button-busqueda img.search-icon {
+  height: 20px; /* Ajusta el tamaño de los iconos */
+  width: auto;
+  display: block; /* Evita espaciados extra debajo de la imagen */
 }
 
-.action-icon-large {
-  width: 96px;
-  aspect-ratio: 1;
-  object-fit: contain;
+/* Ocultamos el div .phrase-icons que ahora está vacío */
+.phrase-icons {
+  display: none;
 }
 
-/* Word cards section */
-.word-cards {
-  margin: 1.5rem auto 0;
-  width: 100%;
-  max-width: 100%;
+.button-busqueda{
+    border: none;
+    outline: none;
+    height: 300px;
 }
 
+.icon {
+  display: block;      /* elimina espacio blanco alrededor */
+  width: 1.5rem;       /* tamaño base: 24px */
+  height: 1.5rem;
+}
+
+.search-actions button.button-busqueda img.search-icon {
+  height: 40px; /* Aumenta la altura a 25 píxeles (ajusta el valor deseado) */
+  width: auto; /* Mantiene la proporción de la imagen */
+  display: block;
+  margin-left: 10px;
+}
+
+/* Si quieres un tamaño diferente para el icono más grande (micrófono) */
+.search-actions button:nth-child(2) img.search-icon { /* Selecciona el segundo botón */
+  height: 50px; /* Aumenta la altura del segundo icono (micrófono) */
+  /* width: auto; ya está definido */
+}
+
+/* Pictogram grid */
+.pictogram-grid { 
+    display: flex; 
+    gap: 23px; 
+    margin: 60px 0 0 60px; 
+}
+
+.pictogram-text {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;        
+  text-align: left;
+}
+
+.pictogram-container { 
+    background: #F5F5F5; 
+    border-radius: 7px; 
+    padding: 20px; 
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25); 
+    text-align: center; 
+}
+
+.pictogram-column .pictogram-image {
+  width: 100%;     /* ocupará todo el ancho del contenedor */
+  height: auto;    /* mantiene proporción */
+}
+
+/* Asegúrate de que el padre tenga un tamaño fijo */
+.pictogram-column {
+  width: 130px;
+  height: 130px;
+  overflow: hidden; /* opcional, para recortar cualquier exceso */
+}
+
+.highlighted { 
+    background: #65A197; 
+}
+
+.pictogram-image { 
+    width: 200px; 
+    height: 200px; 
+}
+
+/* Add button */
 .add-button {
-  margin: 1.5rem auto;
-}
-
-
-.word-cards-container {
-  display: flex;
-  gap: 20px;
-}
-
-.word-card {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.word-card-content {
-  display: flex;
-  flex-direction: column;
+  display: flex;                  /* activa flexbox */
   align-items: center;
-  font-family: Jua, sans-serif;
-  font-size: 40px;
-  color: var(--text-color);
-  text-align: center;
-}
-
-.word-card-content-active {
-  border-radius: 7px;
-  background-color: var(--active-card-color);
-  padding: 0 16px 17px;
-}
-
-.word-image {
-  width: 200px;
-  aspect-ratio: 1.09;
-  object-fit: contain;
-  border-radius: 7px;
-}
-
-.word-text {
-  margin: 10px 23px 0 0;
-  font-weight: 400;
-}
-
-/* Add button styles */
-.add-button {
+  gap: 8px;          
+  width: 135px;                   /* ancho a tu gusto */
+  padding: 15px 20px;             /* espacio interior */
+  background: #F5F5F5;
   border-radius: 71px;
-  background-color: var(--surface-color);
-  box-shadow: var(--shadow);
-  display: flex;
-  margin: 54px auto 0;
-  width: 339px;
-  max-width: 100%;
-  padding: 3px 29px 3px 68px;
-  align-items: center;
-  gap: 20px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
   border: none;
   cursor: pointer;
+  margin: 0 auto;
 }
 
-.add-button-text {
-  font-family: "Konkhmer Sleokchher", sans-serif;
-  font-size: 48px;
-  color: var(--text-color);
-  text-align: center;
-  flex-grow: 1;
+.add-wrapper{
+    margin-top: 45px;
+}
+.add-text {
+  font-size: 1.25rem; /* 20px */
+  font-weight: bold;
 }
 
 .add-icon {
-  width: 64px;
-  aspect-ratio: 1;
-  object-fit: contain;
-  margin-top: 6px;
+  width: 24px;   /* ancho deseado */
+  height: auto;  /* mantiene proporción */
+  display: block;/* quita espacio extra bajo la imagen */
 }
 
-/* Footer styles */
-.app-footer {
-  margin-top: 29px;
-  width: 100%;
-}
-
-.logout-button {
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  width: 100%;
-  padding: 25px 70px;
-  font-family: Inter, sans-serif;
-  font-size: 24px;
-  color: var(--text-color);
-  font-weight: 300;
+.add-img{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 10px; /* Espacio entre los botones */
+  font: inherit;
   cursor: pointer;
+  outline: none;
 }
 
-/* Estilos base (para pantallas grandes) */
-.columna {
-  width: 33.33%; /* 33.33% de ancho en pantallas grandes */
-  float: left; /* Flotante a la izquierda */
+/* Footer */
+.main-footer { 
+    background: #F5F5F5; 
+    border-top: 1px solid #000; 
+    padding: 25px 0; 
+    text-align: right; 
+    padding-right: 40px;
 }
 
-/* Media Query para pantallas pequeñas */
-@media screen and (min-width: 768px) {
-  .phrase-display {
-    padding: 2rem 3rem;
-    gap: 2rem;
-    justify-content: space-between;
-  }
-
-  .current-phrase {
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-  }
-
-  .phrase-actions {
-    justify-content: flex-end;
-  }
-
-  .word-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    max-width: 68rem;
-    margin: 2rem auto 0;
-  }
-
-  .word-card {
-    flex: 1 1 12rem; /* se adapta a distintos anchos */
-    max-width: 16rem;
-  }
-
-  .add-button {
-    margin: 2rem auto;
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
-  }
+.cuadrado-verde {
+  background-color: #65a197; /*  Color del fondo */
+  border-radius: 10px; /*  Redondea las esquinas */
+  width: 155px;  /*  Ancho del cuadrado */
+  height: 155px; /*  Alto del cuadrado */
+  padding: 10px; /*  Espacio interior */
+  border: 1px solid gray; /*  Borde opcional */
 }
 
-
-@media (max-width: 600px) {
-  .phrase-display {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .phrase-actions {
-    margin-top: 1rem;
-  }
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .header-title { font-size: 48px; }
+    .main-question { font-size: 64px; }
+    .pictogram-grid { flex-direction: column; gap: 30px; }
+    .phrase-display { margin: 40px 20px; }
 }
