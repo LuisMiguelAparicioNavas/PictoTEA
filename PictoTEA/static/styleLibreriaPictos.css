@@ -142,13 +142,19 @@
 .picto-grid {
   display: flex;
   margin-top: 20px;
-  width: 100%;
-  max-width: 1120px;
+  width: 1120px;
   align-items: stretch;
   gap: 24px;
   flex-wrap: wrap;
-  margin: 20px auto;
+  margin: 20px auto; /* Keep this if you want it centered within its parent */
+
+  /* --- NEW/MODIFIED PROPERTIES FOR SCROLL --- */
+  height: 350px; /* Adjust this value as needed. This will define the height before scrolling occurs. */
+  max-height: 350px;
+  overflow-y: auto; /* Adds vertical scroll if content overflows this max-height */
+  padding-right: 15px; /* Add padding to account for the scrollbar width so content doesn't get hidden */
 }
+
 
 .picto-item {
   display: flex;
@@ -191,6 +197,7 @@
     padding-right: 40px;
 }
 
+
 @media (max-width: 991px) {
   .main-header {
     padding-right: 20px;
@@ -229,3 +236,4 @@
     padding: 25px 20px;
   }
 }
+
