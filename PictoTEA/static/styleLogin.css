@@ -192,11 +192,12 @@ body {
   font-size: 24px;
   font-family: sans-serif;
   font-weight: bold;
-  color: inherit;
+  color: #000;
   padding-bottom: 5px;
   padding-top: 5px;
   cursor: pointer;
 }
+
 
 @media (max-width: 991px) {
   .login-button {

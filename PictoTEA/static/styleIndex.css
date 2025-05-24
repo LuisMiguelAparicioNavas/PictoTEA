@@ -32,6 +32,19 @@ body {
     gap: 60px; 
 }
 
+
+.enlace-tusfrases {
+  color: inherit;           /* Usa el color del contenedor padre */
+  text-decoration: none;    /* Quita el subrayado */
+  font-weight: bold;        /* Opcional: hacerlo más visible */
+}
+
+.enlace-tusfrases:hover {
+  text-decoration: underline; /* Opcional: subrayado al pasar el ratón */
+  color: #000;                /* Opcional: color en hover */
+}
+
+
 .header-logo { 
     width: 115px; 
     height: 115px; 

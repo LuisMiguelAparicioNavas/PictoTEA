@@ -1,264 +1,433 @@
-.main-header {
-  background-color: rgb(245, 245, 245);
-  border: 1px solid rgb(0, 0, 0);
-  padding: 7px 80px 7px 14px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 32px;
-  color: rgb(0, 0, 0);
-  font-weight: 400;
+*{ 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Inter", sans-serif; 
 }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  gap: 35px;
-  width: 100%;
-}
-
-.logo-image {
-  aspect-ratio: 1.01;
-  object-fit: contain;
-  width: 115px;
-  border-radius: 138px;
-  align-self: stretch;
-  flex-shrink: 0;
-}
-
-.brand-name {
-  font-size: 64px;
-  text-align: center;
-  align-self: stretch;
-  margin: auto 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  width: 237px;
-}
-
-.nav-links {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  align-items: flex-start;
-  gap: 6px;
-  color: rgb(7, 138, 127);
-}
-
-.home-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav-icon {
-  aspect-ratio: 1.08;
-  object-fit: contain;
-  width: 43px;
-  flex-shrink: 0;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-}
-
-.pictos-link {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  align-items: center;
-  gap: 25px;
-  white-space: nowrap;
-}
-
-.pictos-icon {
-  aspect-ratio: 0.84;
-  object-fit: contain;
-  width: 31px;
-  align-self: flex-start;
-  flex-shrink: 0;
-}
-
-.main-content {
-  background-color: rgb(227, 234, 244);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  overflow: hidden;
+/* Main container */
+.desktop-container { 
+    background-color: #E3EAF4; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
 }
 
 .page-title {
-  color: rgb(0, 0, 0);
-  font-size: 85px;
-  font-family:
-    Jua,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-weight: 400;
+  width: 100%;
   text-align: center;
-  align-self: center;
-  margin-top: 38px;
+  font-weight: bold;
+  margin: 25px 0 10px;   /* 50px arriba, solo 10px abajo */
+  font-size: 2rem;
 }
 
-.registration-section {
-  align-self: center;
-  margin-top: 60px;
-  width: 100%;
-  max-width: 1142px;
+/* 1. Centrar título "Registro" */
+.registration-section .page-title {
+    width: 100%;            /* ocupa todo el ancho disponible */
+    text-align: center;     /* centra el texto */
+    margin-bottom: 30px;    /* separa el título del formulario */
+}
+
+/* 2. Formulario en columna */
+/* Convertimos el form en un flex-container en columna */
+.registration-form {
+    display: flex;
+    flex-direction: column; /* apila verticalmente */
+    gap: 10px;               /* ← reduce de 20px a 5px */
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+
+/* Etiqueta e input como bloques de línea */
+.registration-form .form-label,
+.registration-form .form-input {
+    display: block;
+    width: 100%;
+}
+
+/* Estilo de etiquetas */
+.registration-form .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+.registration-form .form-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Botón centrado */
+.registration-form .submit-button {
+    /* radio de esquinas y borde */
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    /* fondo y color de texto */
+    background-color: rgba(101, 161, 151, 1);
+    color: #000 !important;              /* ahora negro */
+
+    /* tipografía y peso */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+    /* espacio interno y ancho */
+    padding: 5px 0;
+    width: 242px;
+    max-width: 100%;
+
+    /* centrado */
+    align-self: center;
+    margin: 50px auto 15px;
+
+    /* cursor */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.registration-form .submit-button:hover {
+    background-color: #558478;
+}
+
+/* Header styles */
+.main-header { 
+    background-color: #F5F5F5; 
+    border-bottom: 1px solid #000; 
+    display: flex; 
+    align-items: center;
+    font-weight: bold;
+    font-family: Jua, sans-serif; 
+    padding: 10px 40px; 
+    gap: 60px; 
+}
+
+.header-logo { 
+    width: 115px; 
+    height: 115px; 
+    border-radius: 50%; 
+}
+
+.logout-link{
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.header-title { 
+    font-family: "Jua", sans-serif; 
+    font-size: 64px; 
+    margin: 0 auto; 
+}
+
+.nav-icon {
+  width: 43px;
+  height: 43px;
+  object-fit: contain;
+}
+
+.header-nav { 
+    display: flex; 
+    align-items: center; 
+    gap: 40px; 
+}
+
+.nav-link { 
+    font-size: 32px; 
+    text-decoration: none; 
+    color: #000; 
+}
+/* Main content */
+.main-content { 
+    flex: 1; 
+    padding: 10px 0; 
+    display: flex; 
+    justify-content: center; 
 }
 
 .content-wrapper {
-  display: flex;
-  gap: 20px;
+    height: 100; 
+    width: 1200px; 
+    padding: 10px 20px; 
 }
 
-.form-column {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  line-height: normal;
-  width: 50%;
+
+.registration-section .content-wrapper {
+    display: flex;                   /* activa Flexbox */
+    flex-direction: row;             /* columnas lado a lado */
+    align-items: flex-start;         /* alinea arriba (puedes usar center si lo prefieres) */
+    gap: 40px;                       /* separación entre columnas */
+    max-width: 1200px;               /* opcional: limita ancho total */
+    margin: 0 auto;                  /* centra horizontalmente */
 }
 
-.registration-form {
-  display: flex;
-  margin-top: 24px;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: stretch;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
-  font-size: 32px;
-  color: rgb(0, 0, 0);
-  font-weight: 700;
+
+.registration-section .form-column {
+    flex: 2;                         /* proporción 2/3 del espacio */
 }
 
-.form-label {
-  align-self: flex-start;
-  margin-top: 29px;
+
+.registration-section .image-column {
+    flex: 1;                         /* proporción 1/3 del espacio */
+    display: flex;                   /* para centrar/lautar la imagen si quieres */
+    justify-content: center;         
+    align-items: center;
 }
 
-.form-label:first-child {
-  margin-top: 0;
+/* Ajuste de la imagen para que no se salga */
+.registration-section .registration-image {
+    max-width: 100%;                 /* nunca supera el ancho de su columna */
+    height: auto;                    /* mantiene proporción */
+    border-radius: 8px;              /* opcional: esquinas redondeadas */
 }
 
-.form-input {
-  border-radius: 71px;
-  background-color: rgb(245, 245, 245);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 36px;
-  margin-top: 10px;
+.main-question { 
+    font-size: 50px; 
+    margin: 30px 0 0 60px; 
+}
+
+/* Phrase display */
+.phrase-display { 
+    background: #F5F5F5; 
+    border-radius: 71px; 
+    padding: 25px 40px; 
+    margin: 40px 60px -25px; 
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    height: 75px;  
+    display: flex;
+}
+
+.phrase-input{
+    input[type="text"],
+    textarea {
+        border: none;
+        background: #F5F5F5; 
+        outline: none;
+    }
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    padding-right: 135px; 
+}
+
+.phrase-input input[type="text"] {
+  flex-grow: 1; /* El input ocupa el espacio restante */
   border: none;
+  outline: none;
+  padding: 8px;
+  width: 850px;
 }
 
-.submit-button {
-  border-radius: 7px;
-  background-color: rgb(101, 161, 151);
-  border: 1px solid rgb(0, 0, 0);
-  align-self: center;
-  margin-top: 60px;
-  width: 242px;
-  padding: 3px 53px;
-  font-size: 24px;
-  white-space: nowrap;
+.search-actions {
+  position: absolute; /* Posiciona las acciones relativamente al .phrase-input */
+  top: 50%; /* Centra verticalmente */
+  right: 10px; /* Ajusta la distancia desde la derecha */
+  transform: translateY(-50%); /* Ajusta el centrado vertical */
+  display: flex; /* Para alinear los botones horizontalmente */
+  align-items: center; /* Centrar verticalmente los botones entre sí */
+}
+
+.search-actions button.button-busqueda {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 10px; /* Espacio entre los botones */
+  font: inherit;
   cursor: pointer;
+  outline: none;
 }
 
-.image-column {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  line-height: normal;
-  width: 50%;
-  margin-left: 20px;
+.search-actions button.button-busqueda img.search-icon {
+  height: 20px; /* Ajusta el tamaño de los iconos */
+  width: auto;
+  display: block; /* Evita espaciados extra debajo de la imagen */
 }
 
-.registration-image {
-  aspect-ratio: 1.01;
-  object-fit: contain;
+
+
+/* Pictogram grid */
+.pictogram-grid { 
+    display: flex; 
+    gap: 23px; 
+    margin: 60px 0 0 60px; 
+}
+
+.pictogram-text {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;        
+  text-align: left;
+}
+
+.pictogram-container { 
+    background: #F5F5F5; 
+    border-radius: 7px; 
+    padding: 20px; 
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25); 
+    text-align: center; 
+}
+
+.pictogram-column .pictogram-image {
+  width: 100%;     /* ocupará todo el ancho del contenedor */
+  height: auto;    /* mantiene proporción */
+}
+
+/* Asegúrate de que el padre tenga un tamaño fijo */
+.pictogram-column {
+  width: 130px;
+  height: 130px;
+  overflow: hidden; /* opcional, para recortar cualquier exceso */
+}
+
+.highlighted { 
+    background: #65A197; 
+}
+
+.pictogram-image { 
+    width: 200px; 
+    height: 200px; 
+}
+
+/* Add button */
+.add-button {
+  display: flex;                  /* activa flexbox */
+  align-items: center;
+  gap: 8px;          
+  width: 135px;                   /* ancho a tu gusto */
+  padding: 15px 20px;             /* espacio interior */
+  background: #F5F5F5;
+  border-radius: 71px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.add-wrapper{
+    margin-top: 45px;
+}
+.add-text {
+  font-size: 1.25rem; /* 20px */
+  font-weight: bold;
+}
+
+.add-icon {
+  width: 24px;   /* ancho deseado */
+  height: auto;  /* mantiene proporción */
+  display: block;/* quita espacio extra bajo la imagen */
+}
+
+.add-img{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 10px; /* Espacio entre los botones */
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Footer */
+.main-footer { 
+    background: #F5F5F5; 
+    border-top: 1px solid #000; 
+    padding: 25px 0; 
+    text-align: right; 
+    padding-right: 40px;
+}
+
+.cuadrado-verde {
+  background-color: #65a197; /*  Color del fondo */
+  border-radius: 10px; /*  Redondea las esquinas */
+  width: 155px;  /*  Ancho del cuadrado */
+  height: 155px; /*  Alto del cuadrado */
+  padding: 10px; /*  Espacio interior */
+  border: 1px solid gray; /*  Borde opcional */
+}
+
+/* ==== Inputs estilo “Login” ==== */
+.registration-form .form-input {
+    /* mismos bordes redondeados y sombra */
+    border-radius: 71px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    /* tipografía y tamaño idénticos */
+    font-family: sans-serif;
+    font-size: 20px;
+    color: inherit;
+
+    /* padding interno igual */
+    padding: 0.5em 0.75em;
+
+    /* para que no cambie de tamaño en móvil */
+    max-width: 100%;
+}
+
+/* ==== Botón estilo “Login” ==== */
+.registration-form .submit-button {
+    /* radio de esquinas y borde */
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    /* fondo y color de texto */
+    background-color: rgba(101, 161, 151, 1);
+    color: #fff;
+
+    /* tipografía y peso */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+
+    /* espacio interno y ancho */
+    padding: 5px 0;
+    width: 242px;
+    max-width: 100%;
+
+    /* centrado */
+    align-self: center;
+    margin: 50px auto 15px;
+
+    /* cursor */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 1) Hacer el form más estrecho */
+.registration-form {
+  max-width: 320px;       /* de 400px pasa a 320px, ajusta a tu gusto */
+  margin: 20px auto 0;    /* 20px arriba, centrado horizontal, sin margen abajo */
+}
+
+/* 2) Separar título “Registro” del form */
+.registration-section .page-title {
+  margin-top: 40px;       /* espacio desde el header */
+  margin-bottom: 20px;    /* espacio entre título y formulario */
   width: 100%;
-  border-radius: 138px;
+  text-align: center;
 }
 
-.main-footer {
-  background-color: rgb(245, 245, 245);
-  border: 1px solid rgb(0, 0, 0);
-  min-height: 79px;
-  margin-top: 61px;
-  width: 100%;
-}
 
+
+/* Responsive adjustments */
 @media (max-width: 991px) {
-  .main-header {
-    max-width: 100%;
-    padding-right: 20px;
-  }
-
-  .brand-name {
-    font-size: 40px;
-  }
-
-  .pictos-link {
-    white-space: initial;
-  }
-
-  .page-title {
-    font-size: 40px;
-  }
-
-  .registration-section {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-
-  .content-wrapper {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .form-column {
-    width: 100%;
-  }
-
-  .registration-form {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-
-  .form-input {
-    max-width: 100%;
-  }
-
-  .submit-button {
-    padding: 3px 20px;
-    margin-top: 40px;
-    white-space: initial;
-  }
-
-  .image-column {
-    width: 100%;
-  }
-
-  .registration-image {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-
-  .main-footer {
-    max-width: 100%;
-    margin-top: 40px;
-  }
+    .header-title { font-size: 48px; }
+    .main-question { font-size: 64px; }
+    .pictogram-grid { flex-direction: column; gap: 30px; }
+    .phrase-display { margin: 40px 20px; }
 }
