@@ -4,6 +4,7 @@ import whisper
 import ffmpeg
 import io
 import soundfile as sf
+import static.funcionesPictogramas as fp
 
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
 CORS(app)
@@ -44,6 +45,15 @@ def transcribe():
 
     # 5) Devuelvo JSON
     return jsonify({'texto': result['text']})
+
+@app.route("/pictogramas", methods=['POST'])
+def pictogramas():
+    #Coger la frase del campo de texto
+    frase = request.form.get('inputFrase')
+    #Llamar a la función que pasa de frases a pictogramas
+    resultados = fp.texto_a_pictogramas_arasaac(frase)
+    #Devolver resultados tipo JSON
+    return jsonify(resultados)
 
 
 if __name__ == '__main__':

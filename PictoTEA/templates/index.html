@@ -30,11 +30,11 @@
               id="inputFrase"
               type="text"
               name="traduccion"
-              placeholder="Quiero comer"
+              placeholder="Escribe aqui"
               style="flex-grow: 1; border: none; outline: none; padding: 8px;"
             />
             <div class="search-actions">
-              <button class="button-busqueda">
+              <button id="btnFrase" class="button-busqueda">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/87e701f195307c11441130acc4d4053b3a23a325?placeholderIfAbsent=true"
                   alt="Buscar"
@@ -54,27 +54,7 @@
         </div>
 
         <div class="pictogram-grid">
-          <div class="cuadrado-verde">
-            <div class="pictogram-column">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/cafcb5f1a8812d92bbd00cee5967862074b3b72d?placeholderIfAbsent=true"
-                alt="Pictograma quiero"
-                class="pictogram-image"
-              />
-            </div>
-            <div class="pictogram-text">Quiero</div>
-          </div>
-
-          <div class="cuadrado-verde">
-            <div class="pictogram-column">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true"
-                alt="Pictograma comer"
-                class="pictogram-image"
-              />
-            </div>
-            <div class="pictogram-text">Comer</div>
-          </div>
+          <!-- Se llena con los resultados de pasar de frase a pictograma -->
         </div>
 
         <div class="add-wrapper">
@@ -99,7 +79,71 @@
   <script>
     const btnHablar = document.getElementById("btnHablar");
     const inputFrase = document.getElementById("inputFrase");
+    const btnFrase = document.getElementById('btnFrase');
+    const pictogramGrid = document.querySelector(".pictogram-grid");
 
+    function createPictograma(palabra, url){
+      const div = document.createElement('div');
+      div.className = 'cuadrado-verde';
+      
+      if(url){
+        div.innerHTML= `
+          <div class="pictogram-column">
+            <img src="${url}" alt="Pictograma ${palabra}" class="pictogram-image"/>
+          </div>
+          <div class="pictogram-text">${palabra}</div>
+        `;
+      }else{
+        div.innerHTML = `
+          <div style="display:flex; align-items:center; justify-content:center; height:100%; width:100%;">
+            <div style="font-size: 72px; color:#666;">❓</div>
+          </div>
+          <div class="pictogram-text">${palabra}</div>
+        `;
+      }
+      return div;
+    }
+    async function buscarPictogramas() {
+      const frase = inputFrase.value;
+      if(!frase){
+        pictogramGrid.innerHTML = '';
+        return;
+      }
+      pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">🔍 Buscando pictogramas...</div>';
+      try{
+        const formData = new FormData();
+        formData.append('inputFrase', frase)
+        const response = await fetch('/pictogramas', {
+          method: 'POST',
+          body: formData
+        });
+        if (!response.ok) {
+          throw new Error(`Error del servidor: ${response.status}`);
+        }
+        const resultados = await response.json();
+         if (!resultados || resultados.length === 0) {
+          pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">😕 No se encontraron pictogramas</div>';
+          return;
+        }
+        pictogramGrid.innerHTML = "";
+        // Mostrar resultados
+        resultados.forEach(([palabra, url]) => {
+          const pictogramaElement = createPictograma(palabra, url);
+          pictogramGrid.appendChild(pictogramaElement);
+        });
+      }catch (error) {
+        console.error('Error al buscar pictogramas:', error);
+        pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#dc3545;">❌ Error al buscar pictogramas</div>';
+      }
+    }
+    //Event listeners
+    btnFrase.addEventListener("click", buscarPictogramas);
+    // Limpiar pictogramas cuando se borra el input
+    inputFrase.addEventListener("input", () => {
+      if (!inputFrase.value.trim()) {
+        pictogramGrid.innerHTML = '';
+      }
+    });
     btnHablar.addEventListener("click", async () => {
       // Feedback inmediato
       inputFrase.value = "Grabando…";
