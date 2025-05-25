@@ -9,6 +9,21 @@ import static.funcionesPictogramas as fp
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
 CORS(app)
 
+
+categorias = [
+    ["food", "beverage", "gastronomy", "taste", "cookery"], #Alimentacion
+    ["sports", "games", "musical art", "show", "hobby", "outdoor activity", "entertainment facility", "toy"], #Ocio
+    ["animal anatomy", "wild animal", "domestic animal", "marine animal", "flying animal", "terrestrial animal", "tree", "bush", "cactus", "fungus", "flower", "aromatic plant", "plant", "extinct being"], #Ser vivo
+    ["monument", "building", "facility", "urban area", "infrastructure", "workplace", "rural area"], #Lugar
+    ["event", "calendar", "unit of time", "chronological device"], #Tiempo
+    ["traffic", "land transport","aerial transport", "water transport"], #Desplazamiento
+    ["christianity", "judaism", "islam", "hinduism", "budism", "religious place", "religion"], #Religion
+    ["work", "work organization", "professional"], #Trabajo
+    ["communication system", "mass media", "tv show", "telecommunication"], #Comunicación
+    ["furniture", "appliance", "clothes"], #Objetos
+    ["art","science","literature"] #Conocimiento
+]
+
 # Carga el modelo Whisper solo una vez
 model = whisper.load_model("base")
 
@@ -18,6 +33,10 @@ def index():
     # Renderiza templates/index.html
     return render_template('index.html')
 
+
+@app.route('/libreriaPictos')
+def libreriaPictos():
+    return render_template('libreriaPictos.html')
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
@@ -54,6 +73,33 @@ def pictogramas():
     resultados = fp.texto_a_pictogramas_arasaac(frase)
     #Devolver resultados tipo JSON
     return jsonify(resultados)
+
+@app.route("/get_categoria", methods=['POST'])
+def get_categoria():
+    try:
+        categoria_idx = int(request.form.get("categoria"))
+        
+        if 0 <= categoria_idx < len(categorias):
+            categoria_keywords = categorias[categoria_idx]
+            pictos_tuplas = fp.obtener_pictogramas_por_categoria(categoria_keywords)
+            
+            # Convertir las tuplas a diccionarios que espera el JavaScript
+            if pictos_tuplas:
+                pictos_dict = []
+                for palabra, url in pictos_tuplas:
+                    pictos_dict.append({
+                        "palabra": palabra,
+                        "url": url
+                    })
+                return jsonify({"pictos": pictos_dict})
+            else:
+                return jsonify({"pictos": []})
+        
+        return jsonify({"error": "Categoría inválida"}), 400
+        
+    except Exception as e:
+        print(f"Error en get_categoria: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
 
 
 if __name__ == '__main__':

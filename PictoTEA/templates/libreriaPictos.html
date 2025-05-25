@@ -11,8 +11,8 @@
     <div class="desktop-container"> 
       <header class="main-header"> 
       <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a>       
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link nav-link-active">Pictos</a> </nav> 
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="{{ url_for('index') }}" class="nav-link">Página principal</a>       
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="{{ url_for('libreriaPictos') }}" class="nav-link nav-link-active">Pictos</a> </nav> 
       </header>
 
       <main class="main-content">
@@ -20,116 +20,46 @@
 
         <section class="categories-section">
           <div class="category-row">
-            <input type="radio" id="cat-alimentacion" name="category">
+            <input type="radio" id="cat-alimentacion" name="category" value="0" checked>
             <label for="cat-alimentacion" class="category-btn">Alimentacion</label>
 
-            <input type="radio" id="cat-ocio" name="category">
+            <input type="radio" id="cat-ocio" name="category" value="1">
             <label for="cat-ocio" class="category-btn">Ocio</label>
 
-            <input type="radio" id="cat-ser-vivo" name="category">
+            <input type="radio" id="cat-ser-vivo" name="category" value="2">
             <label for="cat-ser-vivo" class="category-btn">Ser vivo</label>
 
-            <input type="radio" id="cat-lugar" name="category">
+            <input type="radio" id="cat-lugar" name="category" value="3">
             <label for="cat-lugar" class="category-btn">Lugar</label>
 
-            <input type="radio" id="cat-tiempo" name="category">
+            <input type="radio" id="cat-tiempo" name="category" value="4">
             <label for="cat-tiempo" class="category-btn">Tiempo</label>
 
-            <input type="radio" id="cat-desplazamiento" name="category">
+            <input type="radio" id="cat-desplazamiento" name="category" value="5">
             <label for="cat-desplazamiento" class="category-btn">Desplazamiento</label>
 
-            <input type="radio" id="cat-religion" name="category">
+            <input type="radio" id="cat-religion" name="category" value="6">
             <label for="cat-religion" class="category-btn">Religion</label>
           </div>
        
 
           <div class="category-row category-row-secondary">
-            <input type="radio" id="cat-trabajo" name="category">
+            <input type="radio" id="cat-trabajo" name="category" value="7">
             <label for="cat-trabajo" class="category-btn">Trabajo</label>
 
-            <input type="radio" id="cat-comunicacion" name="category">
+            <input type="radio" id="cat-comunicacion" name="category" value="8">
             <label for="cat-comunicacion" class="category-btn">Comunicacion</label>
 
-            <input type="radio" id="cat-objeto" name="category">
+            <input type="radio" id="cat-objeto" name="category" value="9">
             <label for="cat-objeto" class="category-btn">Objeto</label>
 
-            <input type="radio" id="cat-conocimiento" name="category">
+            <input type="radio" id="cat-conocimiento" name="category" value="10">
             <label for="cat-conocimiento" class="category-btn">Conocimiento</label>
           </div>
         </section>
-
-
-          <section class="picto-grid" aria-label="Grid de pictogramas">
-            <article class="picto-item">
-              <div class="picto-image-container">
-                <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true" alt="Pictograma de Comer" class="picto-image" />
-              </div>
-              <h3 class="picto-title">Comer</h3>
-              <div class="picto-image-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/edd5f563afe23b86557a441288bbba72e07812b7?placeholderIfAbsent=true"
-                  alt="Pictograma alternativo de Comer"
-                  class="picto-image"
-                />
-              </div>
-            </article>
-
-            <article class="picto-item">
-              <div class="picto-image-container">
-                <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/2211ad0cc1f16f1b89b016756065c6f768329164?placeholderIfAbsent=true" alt="Pictograma de Queso" class="picto-image" />
-              </div>
-              <h3 class="picto-title">Queso</h3>
-              <div class="picto-image-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/c39bcfd3004618592d3328a0d9da7ab46c07bbf9?placeholderIfAbsent=true"
-                  alt="Pictograma alternativo de Queso"
-                  class="picto-image"
-                />
-              </div>
-            </article>
-
-            <article class="picto-item">
-              <div class="picto-image-container">
-                <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/e973d65f61b139e7e2fb2d1482db6194fb801700?placeholderIfAbsent=true" alt="Pictograma de Yogur" class="picto-image" />
-              </div>
-              <h3 class="picto-title">Yogur</h3>
-              <div class="picto-image-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/b29d6a52207647a84542c31ff798a466c28ca08d?placeholderIfAbsent=true"
-                  alt="Pictograma alternativo de Yogur"
-                  class="picto-image"
-                />
-              </div>
-            </article>
-
-            <article class="picto-item">
-              <div class="picto-image-container">
-                <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/7da9231f34e567ab6ea2b204b3b1950adc185ff5?placeholderIfAbsent=true" alt="Pictograma de Fruta" class="picto-image" />
-              </div>
-              <h3 class="picto-title">Fruta</h3>
-              <div class="picto-image-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ae9c1b9f04144ba85ba321c17aa36b4e08a47bc2?placeholderIfAbsent=true"
-                  alt="Pictograma alternativo de Fruta"
-                  class="picto-image"
-                />
-              </div>
-            </article>
-
-            <article class="picto-item">
-              <div class="picto-image-container">
-                <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/05802bba3460988547ee6ac7a07ef68a31f95520?placeholderIfAbsent=true" alt="Pictograma de Limón" class="picto-image" />
-              </div>
-              <h3 class="picto-title">Limon</h3>
-              <div class="picto-image-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/e482e34b57748c909664c8d522ba6f919c89caf9?placeholderIfAbsent=true"
-                  alt="Pictograma alternativo de Limón"
-                  class="picto-image"
-                />
-              </div>
-            </article>
-          </section>
+        <div class="pictogram-grid">
+          <!-- Se llena con los resultados de pasar de frase a pictograma -->
+        </div>
       </main>
 
       <footer class="main-footer">
@@ -137,5 +67,90 @@
     </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+    <script>
+      const pictogramGrid = document.querySelector(".pictogram-grid");
+      const categoryInputs = document.querySelectorAll('input[name="category"]');
+
+      // Función para crear pictograma - EXACTAMENTE IGUAL QUE EN EL INDEX
+      function createPictograma(palabra, url){
+      const div = document.createElement('div');
+      div.className = 'cuadrado-verde';
+      
+      if(url){
+        div.innerHTML= `
+          <div class="pictogram-column">
+            <img src="${url}" alt="Pictograma ${palabra}" class="pictogram-image"/>
+          </div>
+          <div class="pictogram-text">${palabra}</div>
+        `;
+      }else{
+        div.innerHTML = `
+          <div style="display:flex; align-items:center; justify-content:center; height:100%; width:100%;">
+            <div style="font-size: 72px; color:#666;">❓</div>
+          </div>
+          <div class="pictogram-text">${palabra}</div>
+        `;
+      }
+      return div;
+    }
+
+      // Función para mostrar pictogramas de una categoría
+      async function mostrarPictogramas(categoriaId) {
+        // Mostrar indicador de carga
+        pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">⏳ Cargando pictogramas...</div>';
+        
+        try {
+          // Crear FormData para enviar la categoría
+          const formData = new FormData();
+          formData.append('categoria', categoriaId);
+          
+          // Hacer petición al endpoint de Flask
+          const response = await fetch('/get_categoria', {
+            method: 'POST',
+            body: formData
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+          }
+          
+          const data = await response.json();
+          
+          // Limpiar la grilla
+          pictogramGrid.innerHTML = '';
+          
+          // Verificar si hay pictogramas
+          if (!data.pictos || data.pictos.length === 0) {
+            pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">😕 No hay pictogramas en esta categoría</div>';
+            return;
+          }
+          
+          // Mostrar los pictogramas obtenidos
+          data.pictos.forEach(picto => {
+            const pictogramaElement = createPictograma(picto.palabra, picto.url);
+            pictogramGrid.appendChild(pictogramaElement);
+          });
+          
+        } catch (error) {
+          console.error('Error al obtener pictogramas:', error);
+          pictogramGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">❌ Error al cargar pictogramas. Inténtalo de nuevo.</div>';
+        }
+      }
+
+      // Event listeners para los radio buttons
+      categoryInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            mostrarPictogramas(parseInt(e.target.value));
+          }
+        });
+      });
+
+      // Mostrar categoría inicial (Alimentación) cuando carga la página
+      document.addEventListener('DOMContentLoaded', () => {
+        mostrarPictogramas(0);
+      });
+    </script>
   </body>
 </html>
