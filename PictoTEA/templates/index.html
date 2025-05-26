@@ -21,7 +21,7 @@
 
     <main class="main-content">
       <div class="content-wrapper">
-        <button class="phrases-tag"><a href="tusFrases.html" class = "enlace-tusfrases">Tus frases</button></a>
+        <button class="phrases-tag"><a href="{{ url_for('frases.tus_frases') }}" class = "enlace-tusfrases" id="irTusFrases">Tus frases</button></a>
         <h2 class="main-question">¿Qué quieres decir?</h2>
 
         <div class="phrase-display">
@@ -178,6 +178,100 @@
       };
     });
   </script>
+  <!-- Final script whisper -->
+
+  <!-- Inicio script logica de tus frases -->
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const botonAñadir = document.querySelector('.add-button');
+      const irTusFrases = document.getElementById('irTusFrases');
+      const inputFrase = document.getElementById('inputFrase');
+
+      // Función para obtener usuario logeado (simulado con localStorage)
+      function usuarioLogeado() {
+        return localStorage.getItem('usuarioLogeado'); // o null si no está
+      }
+
+      // Añadir frase al backend
+      async function añadirFraseBackend(email, frase) {
+        try {
+          const response = await fetch('/añadirFrase', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, frase: frase })
+          });
+          if (!response.ok) {
+            throw new Error('Error al añadir frase');
+          }
+          return true;
+        } catch (error) {
+          console.error(error);
+          return false;
+        }
+      }
+
+      // Botón Añadir
+      if (botonAñadir) {
+        botonAñadir.addEventListener('click', async () => {
+          const usuario = usuarioLogeado();
+          const frase = inputFrase.value.trim();
+
+          if (!usuario && frase.length > 0) {
+            // Sin login + frase -> redirigir login + guardar frase para añadir después
+            localStorage.setItem('frasePendiente', frase);
+            window.location.href = '/login';
+          } else if (!usuario && frase.length === 0) {
+            // Sin login + sin frase -> redirigir login
+            window.location.href = '/login';
+          } else if (usuario && frase.length === 0) {
+            // Login + sin frase -> mensaje temporal
+            alert('Primero debes escribir una frase para guardarla');
+          } else if (usuario && frase.length > 0) {
+            // Login + frase -> añadir frase en backend
+            const exito = await añadirFraseBackend(usuario, frase);
+            if (exito) {
+              alert('Añadido correctamente');
+              inputFrase.value = '';
+            } else {
+              alert('Error al añadir la frase. Inténtalo de nuevo.');
+            }
+          }
+        });
+      }
+
+      // Botón Tus frases
+      if (irTusFrases) {
+        irTusFrases.addEventListener('click', (e) => {
+          e.preventDefault();
+          const usuario = usuarioLogeado();
+          if (!usuario) {
+            window.location.href = '/login';
+          } else {
+            window.location.href = '/tusFrases';
+          }
+        });
+      }
+
+      // Comprobar si hay frase pendiente tras login
+      const frasePendiente = localStorage.getItem('frasePendiente');
+      if (frasePendiente && usuarioLogeado()) {
+        // Intentar añadir la frase pendiente
+        (async () => {
+          const usuario = usuarioLogeado();
+          const exito = await añadirFraseBackend(usuario, frasePendiente);
+          if (exito) {
+            alert('Añadido correctamente');
+            localStorage.removeItem('frasePendiente');
+            inputFrase.value = '';
+          } else {
+            alert('Error al añadir la frase pendiente.');
+          }
+        })();
+      }
+    });
+
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

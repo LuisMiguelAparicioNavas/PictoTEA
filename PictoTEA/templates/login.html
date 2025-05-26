@@ -13,7 +13,7 @@
   <body>
     <header class="main-header"> 
       <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a> 
+      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="{{ url_for('index') }}" class="nav-link">Página principal</a> 
       <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link">Pictos</a> </nav> 
     </header>
 
@@ -21,15 +21,20 @@
     <main class="login-container" data-el="div-1">
       <div class="login-content">
         <section class="login-form-section">
-          <form class="login-form">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-input" />
-      
+          <form method="POST" action="{{ url_for('auth.login') }}" class="login-form">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" id="username" name="username" class="form-input" required />
+
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" id="password" class="form-input" />
-      
+            <input type="password" id="password" name="password" class="form-input" required />
+
             <button type="submit" class="login-button">Iniciar sesión</button>
+
+            {% if error %}
+              <div style="color: red; margin-top: 8px;">{{ error }}</div>
+            {% endif %}
           </form>
+
         </section>
       
         <section class="login-image-section">
@@ -39,8 +44,39 @@
     </main>
       
     <footer class="main-footer">
-      <a href="register.html" class="logout-link">Registrarse</a>
+      <a href="{{ url_for('auth.register') }}" class="logout-link">Registrarse</a>
     </footer>
+
+    <!-- Script correspondiente para el login -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('loginForm');
+        const errorDiv = document.getElementById('loginError');
+
+        if (form) {
+          form.addEventListener('submit', function(evento) {
+            evento.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (email === 'usuario@picto.com' && password === '1234') {
+              localStorage.setItem('usuarioLogeado', email);
+              const destino = localStorage.getItem('redirectAfterLogin');
+              if (destino === 'verFrases') {
+                window.location.href = '/tusFrases';
+              } else if (destino === 'fraseAñadir') {
+                window.location.href = '/';
+              } else {
+                window.location.href = '/';
+              }
+            } else {
+              errorDiv.textContent = 'Credenciales incorrectas.';
+            }
+          });
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </body>
 </html>

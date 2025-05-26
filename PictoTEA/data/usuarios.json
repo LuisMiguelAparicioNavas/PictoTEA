@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Diego",
+    "email": "hola@gmail.com",
+    "contraseña": "73c3de4175449987ef6047f6e0bea91c1036a8599b43113b3f990104ab294a47"
+  },
+  {
+    "nombre": "Sergio",
+    "email": "sergio@gmail.com",
+    "contraseña": "d8542114d7d40f3c82fc0919efc644df30f4e827c2bd6b83b9dbec8358b2fbc4"
+  },
+  {
+    "nombre": "x",
+    "email": "x@gmail.com",
+    "contraseña": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881"
+  },
+  {
+    "nombre": "y",
+    "email": "y@gmail.com",
+    "contraseña": "a1fce4363854ff888cff4b8e7875d600c2682390412a8cf79b37d0b11148b0fa"
+  }
+]

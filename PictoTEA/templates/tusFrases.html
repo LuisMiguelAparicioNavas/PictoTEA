@@ -18,53 +18,6 @@
       <main class="main-content">
         <h2 class="library-title">Tus frases</h2>
         <div class="frases-scroll-container">
-          <section class="picto-grid" aria-label="Frases construidas">
-              <div class="cuadrado-verde">
-                <div class="pictogram-column">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/cafcb5f1a8812d92bbd00cee5967862074b3b72d?placeholderIfAbsent=true"
-                    alt="Pictograma quiero"
-                    class="pictogram-image"
-                  />
-                </div>
-                <div class="pictogram-text">Quiero</div>
-              </div>
-
-              <div class="cuadrado-verde">
-                <div class="pictogram-column">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/ca961bbe813121b4339317ffaeb30196b2763dc4?placeholderIfAbsent=true"
-                    alt="Pictograma comer"
-                    class="pictogram-image"
-                  />
-                </div>
-                <div class="pictogram-text">Comer</div>
-              </div>
-          </section>
-
-          <section class="picto-grid" aria-label="Frases construidas">
-            <div class="cuadrado-verde">
-              <div class="pictogram-column">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/cafcb5f1a8812d92bbd00cee5967862074b3b72d?placeholderIfAbsent=true"
-                  alt="Pictograma quiero"
-                  class="pictogram-image"
-                />
-              </div>
-              <div class="pictogram-text">Quiero</div>
-            </div>
-
-            <div class="cuadrado-verde">
-              <div class="pictogram-column">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/98790e15f4c0e751094c2c06386135aa241f8f98?placeholderIfAbsent=true" 
-                  alt="Pictograma Juguetes" 
-                  class="pictogram-image"
-                />
-              </div>
-              <div class="pictogram-text">Juguetes</div>
-            </div>
-          </section>
         </div>
       </main>
 
@@ -72,6 +25,121 @@
         <a href="login.html" class="logout-link">Cerrar sesión</a>
     </footer>
     </div>
+    <!-- Al final del body, antes de bootstrap bundle -->
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        // Comprobar usuario logueado
+        const usuario = localStorage.getItem('usuarioLogeado');
+        if (!usuario) {
+          // No logueado: redirigir al login y parar ejecución
+          window.location.href = '/login';
+          return; // Solo aquí se permite return para abortar la carga, es el inicio del script
+        }
+
+        // Función para cargar las frases del usuario
+        async function cargarFrases() {
+          const contenedorFrases = document.querySelector('.frases-scroll-container');
+          contenedorFrases.innerHTML = '<div style="text-align:center; color:#666;">⏳ Cargando tus frases...</div>';
+
+          try {
+            // Petición para obtener frases asociadas al usuario logueado (email u otro identificador)
+            const respuesta = await fetch('/tusFrases/data');
+            if (!respuesta.ok) {
+              contenedorFrases.innerHTML = '<div style="color:red; text-align:center;">❌ Error al cargar frases</div>';
+              return;
+            }
+            const data = await respuesta.json();
+            const frases = data.frases;
+
+            // Crear fragmento para mejorar performance
+            const fragment = document.createDocumentFragment();
+
+            // Iterar todas las frases para crear su representación
+            for (let i = 0; i < frases.length; i++) {
+              const frase = frases[i];
+
+              // Preparar y hacer la petición para obtener pictogramas de la frase
+              const formData = new FormData();
+              formData.append('inputFrase', frase);
+
+              const resPictos = await fetch('/pictogramas', {
+                method: 'POST',
+                body: formData,
+              });
+
+              if (!resPictos.ok) {
+                // En caso de error, mostrar mensaje y seguir con la siguiente frase
+                const errorDiv = document.createElement('div');
+                errorDiv.style.color = 'red';
+                errorDiv.style.textAlign = 'center';
+                errorDiv.textContent = '❌ Error al cargar pictogramas para la frase.';
+                fragment.appendChild(errorDiv);
+                continue; // Avanzar al siguiente elemento del bucle sin return ni break
+              }
+
+              const pictos = await resPictos.json();
+
+              // Crear sección para mostrar pictogramas de la frase
+              const seccion = document.createElement('section');
+              seccion.className = 'picto-grid';
+              seccion.setAttribute('aria-label', 'Frase construida');
+
+              // Crear cada pictograma dentro de la frase
+              for (let j = 0; j < pictos.length; j++) {
+                const palabra = pictos[j][0];
+                const url = pictos[j][1];
+
+                const div = document.createElement('div');
+                div.className = 'cuadrado-verde';
+
+                if (url) {
+                  div.innerHTML = `
+                    <div class="pictogram-column">
+                      <img src="${url}" alt="Pictograma ${palabra}" class="pictogram-image"/>
+                    </div>
+                    <div class="pictogram-text">${palabra}</div>
+                  `;
+                } else {
+                  div.innerHTML = `
+                    <div style="display:flex; align-items:center; justify-content:center; height:100%; width:100%;">
+                      <div style="font-size: 72px; color:#666;">❓</div>
+                    </div>
+                    <div class="pictogram-text">${palabra}</div>
+                  `;
+                }
+
+                seccion.appendChild(div);
+              }
+
+              fragment.appendChild(seccion);
+            }
+
+            // Vaciar el contenedor y añadir las frases con pictogramas
+            contenedorFrases.innerHTML = '';
+            contenedorFrases.appendChild(fragment);
+          } catch (error) {
+            console.error('Error general al cargar frases:', error);
+            const contenedorFrases = document.querySelector('.frases-scroll-container');
+            contenedorFrases.innerHTML = '<div style="color:red; text-align:center;">❌ Error al cargar frases</div>';
+          }
+        }
+
+        // Cargar las frases al cargar la página
+        cargarFrases();
+
+        // Control para el botón cerrar sesión para limpiar localStorage y redirigir
+        const logoutLink = document.querySelector('.logout-link');
+        if (logoutLink) {
+          logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Limpiar datos de usuario localmente
+            localStorage.removeItem('usuarioLogeado');
+            // Redirigir a login
+            window.location.href = '/login';
+          });
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </body>
 </html>

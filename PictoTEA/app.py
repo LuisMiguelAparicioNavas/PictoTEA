@@ -4,10 +4,32 @@ import whisper
 import ffmpeg
 import io
 import soundfile as sf
-import static.funcionesPictogramas as fp
+import funcionesPictogramas as fp
+from flask import Flask
+from routes.auth import auth_bp
+from routes.frases import frases_bp
+from flask_login import LoginManager
+from user import User
+from json_manager import cargar_json, RUTA_USUARIOS
 
-app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'clave_super_secreta_y_segura'
+app.register_blueprint(auth_bp)
+app.register_blueprint(frases_bp)
+
 CORS(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'  # el nombre del endpoint (ajusta si tu ruta se llama distinto)
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    from user import User
+    return User.get_by_email(user_id)
 
 
 categorias = [
