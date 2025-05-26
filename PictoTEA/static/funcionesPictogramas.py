@@ -115,7 +115,7 @@ def obtener_pictogramas_por_categoria(categoria, idioma="es"):
             keywords = item.get("keywords", [])
             if keywords:
                 primera_keyword = keywords[0].get("keyword")
-                url_png = f"https://static.arasaac.org/pictograms/{item["_id"]}/{item["_id"]}_500.png"
+                url_png = f"https://static.arasaac.org/pictograms/{item['_id']}/{item['_id']}_500.png"
                 pictos_categorizados.append((primera_keyword, url_png))
             else:
                 print("ERROR: No se ha podido acceder a las Keywords de los pictogramas")
