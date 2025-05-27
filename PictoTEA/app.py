@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, render_template, request, redirect,url_for, session
-from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from flask_cors import CORS
 import whisper
 import ffmpeg
@@ -8,8 +7,6 @@ import soundfile as sf
 import static.funcionesPictogramas as fp
 import json
 import hashlib
-import hashlib
-import json
 import os
 
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
@@ -35,7 +32,7 @@ model = whisper.load_model("base")
 
 app = Flask(__name__)
 app.secret_key = 'clave_super_secreta'
-USUARIOS_PATH = 'usuarios.json'
+USUARIOS_PATH = './data/users.json'
 
 def leer_json(ruta):
     with open(ruta, 'r', encoding='utf-8') as f:
@@ -52,6 +49,10 @@ def encontrar_usuario(email, password_hash):
         if u.get("email") == email and u.get("contraseña") == password_hash:
             usuario_valido = u
     return usuario_valido
+
+@app.route("/register")
+def register():
+    return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -97,13 +98,10 @@ def añadir():
     if 'usuario' not in session:
         session['next'] = url_for('index')
         return redirect(url_for('login'))
-    # aquí la lógica de “añadir” (o simplemente volver al índice)
-    return redirect(url_for('home'))
 
 
 @app.route('/')
 def index():
-    # Renderiza templates/index.html
     return render_template('index.html')
 
 
@@ -146,6 +144,37 @@ def pictogramas():
     resultados = fp.texto_a_pictogramas_arasaac(frase)
     #Devolver resultados tipo JSON
     return jsonify(resultados)
+
+
+@app.route("/registrarUsuario", methods=["POST"])
+def registrarUsuario():
+    nombre = request.form.get('nombre')
+    mail = request.form.get('mail')
+    contrasena = str(request.form.get('contrasena'))
+    
+    hashed_pass = hashlib.sha256(contrasena.encode('utf-8')).hexdigest()
+    datosUsuario = {"nombre": str(nombre), "mail": str(mail), "pass" : hashed_pass}
+
+    usuarios = []
+    if os.path.exists("data/users.json"):
+        with open("data/users.json", "r") as j:
+            try:
+                usuarios = json.load(j)
+            except json.JSONDecodeError:
+                usuarios = []
+
+    usuarios.append(datosUsuario)
+
+    with open("data/users.json", "w") as j:
+        json.dump(usuarios, j, indent=2)
+
+    return "Registro exitoso", 200
+
+@app.route("/logout")
+def logout():
+    if "usuario" in session:
+        session.clear()
+    return redirect(url_for('login'))
 
 @app.route("/get_categoria", methods=['POST'])
 def get_categoria():
