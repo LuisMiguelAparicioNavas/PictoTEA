@@ -1,10 +1,13 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from flask_cors import CORS
 import whisper
 import ffmpeg
 import io
 import soundfile as sf
 import static.funcionesPictogramas as fp
+import hashlib
+import json
+import os
 
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
 CORS(app)
@@ -37,6 +40,14 @@ def index():
 @app.route('/libreriaPictos')
 def libreriaPictos():
     return render_template('libreriaPictos.html')
+
+@app.route("/register")
+def register():
+    return render_template('register.html')
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
@@ -100,6 +111,37 @@ def get_categoria():
     except Exception as e:
         print(f"Error en get_categoria: {str(e)}")
         return jsonify({"error": "Error interno del servidor"}), 500
+    
+@app.route("/registrarUsuario", methods=["POST"])
+def registrarUsuario():
+    nombre = request.form.get('nombre')
+    mail = request.form.get('mail')
+    contrasena = str(request.form.get('contrasena'))
+    
+    hashed_pass = hashlib.sha256(contrasena.encode('utf-8')).hexdigest()
+    datosUsuario = {"nombre": str(nombre), "mail": str(mail), "pass" : hashed_pass}
+
+    usuarios = []
+    if os.path.exists("data/users.json"):
+        with open("data/users.json", "r") as j:
+            try:
+                usuarios = json.load(j)
+            except json.JSONDecodeError:
+                usuarios = []
+
+    usuarios.append(datosUsuario)
+
+    with open("data/users.json", "w") as j:
+        json.dump(usuarios, j, indent=2)
+
+    return "Registro exitoso", 200
+
+@app.route("/logout")
+def logout():
+    if "usuario" in session:
+        session.clear()
+    return redirect(url_for('login'))
+
 
 
 if __name__ == '__main__':
