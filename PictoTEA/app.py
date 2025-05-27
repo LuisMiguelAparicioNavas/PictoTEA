@@ -47,6 +47,7 @@ def login():
 
 @app.route('/tus_frases')
 def tus_frases():
+
     return render_template('tusFrases.html')
 
 @app.route('/libreriaPictos')
@@ -59,30 +60,30 @@ def añadir():
         return jsonify({"error": "no_session"}), 401
 
     usr_id = session['usr_id']
-    frases_total = {}
+    frases_total = []
 
-    # Leer archivo de frases si existe
+    # Leer archivo existente si hay
     if os.path.exists("data/frases.json"):
-        with open("data/frases.json", "r") as j:
+        with open("data/frases.json", "r") as f:
             try:
-                frases_total = json.load(j)
+                frases_total = json.load(f)
             except json.JSONDecodeError:
-                frases_total = {}
+                frases_total = []
 
-    # Obtener pictogramas enviados por POST
+    # Obtener datos enviados
     data = request.get_json()
     pictogramas = data.get("pictogramas", [])
 
-    # Validación simple
     if not pictogramas or not isinstance(pictogramas, list):
         return jsonify({"error": "Datos inválidos"}), 400
 
-    # Asegurar estructura para el usuario
-    if usr_id not in frases_total:
-        frases_total[usr_id] = []
+    # Crear nueva entrada
+    nueva_frase = {
+        "id": usr_id,
+        "pictogramas": pictogramas
+    }
 
-    # Añadir nueva frase del usuario
-    frases_total[usr_id].append(pictogramas)
+    frases_total.append(nueva_frase)
 
     # Guardar en archivo
     with open("data/frases.json", "w") as f:

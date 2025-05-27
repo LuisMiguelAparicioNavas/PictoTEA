@@ -1,34 +1,23 @@
-{
-  "1": [
-    [
+[
+  {
+    "id": 1,
+    "pictogramas": [
       {
-        "palabra": "mariposas",
-        "url": "https://static.arasaac.org/pictograms/26200/26200_500.png"
+        "palabra": "esto",
+        "url": "https://static.arasaac.org/pictograms/7095/7095_500.png"
       },
       {
-        "palabra": "bonitas",
-        "url": "https://static.arasaac.org/pictograms/11194/11194_500.png"
+        "palabra": "es",
+        "url": "https://static.arasaac.org/pictograms/31484/31484_500.png"
+      },
+      {
+        "palabra": "una",
+        "url": "https://static.arasaac.org/pictograms/2627/2627_500.png"
+      },
+      {
+        "palabra": "prueba",
+        "url": "https://static.arasaac.org/pictograms/30776/30776_500.png"
       }
     ]
-  ],
-  "1": [
-    [
-      {
-        "palabra": "me",
-        "url": "https://static.arasaac.org/pictograms/6632/6632_500.png"
-      },
-      {
-        "palabra": "gustan",
-        "url": null
-      },
-      {
-        "palabra": "las",
-        "url": "https://static.arasaac.org/pictograms/7031/7031_500.png"
-      },
-      {
-        "palabra": "mariposas",
-        "url": "https://static.arasaac.org/pictograms/26200/26200_500.png"
-      }
-    ]
-  ]
-}
+  }
+]
