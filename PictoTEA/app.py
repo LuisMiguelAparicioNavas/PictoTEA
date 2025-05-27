@@ -47,8 +47,21 @@ def login():
 
 @app.route('/tus_frases')
 def tus_frases():
+    if 'usr_id' not in session:
+        return redirect(url_for('login'))
 
-    return render_template('tusFrases.html')
+    frases_total = []
+    if os.path.exists("data/frases.json"):
+        with open("data/frases.json", "r") as f:
+            try:
+                frases_total = json.load(f)
+            except json.JSONDecodeError:
+                frases_total = []
+
+    frasesUSR = [d for d in frases_total if d.get("id") == session["usr_id"]]
+    pictogramas = [frase.get("pictogramas", []) for frase in frasesUSR]
+
+    return render_template('tusFrases.html', pictogramas=pictogramas)
 
 @app.route('/libreriaPictos')
 def libreriaPictos():

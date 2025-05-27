@@ -1,3 +1,12 @@
+hr{
+  margin: 20px auto;
+  background-color: #898888;
+  height: 10px;
+  width: 500px;
+  border: 3px solid;
+
+}
+
 .desktop-container { 
   background-color: #E3EAF4; 
   min-height: 100vh; 
@@ -152,23 +161,16 @@
   background-color: rgba(244, 212, 83, 1);
 }
 
-.frases-scroll-container {
-  display: flex;
-  flex-direction: column;
-  gap: 55px;             /* separación entre frases */
-  max-height: 400px;     /* altura máxima visible */
-  overflow-y: auto;      /* scroll vertical si se excede */
-  padding-right: 15px;   /* compensación para el scroll */
-}
-
-
 .picto-grid {
   display: flex;
   width: 1120px;
   align-items: stretch;
   gap: 24px;
+  row-gap: 50px;
   flex-wrap: wrap;
+  margin-top: 120px ;
   margin-left: 175px;
+  margin-bottom: 120px;
 }
 
 
