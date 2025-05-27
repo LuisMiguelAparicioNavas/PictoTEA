@@ -1,227 +1,8 @@
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #e3eaf4;
-}
-
-.main-header { 
-  background-color: #F5F5F5; 
-  border-bottom: 1px solid #000; 
-  display: flex; 
-  align-items: center;
-  font-weight: bold;
-  font-family: Jua, sans-serif; 
-  padding: 10px 40px; 
-  gap: 60px; 
-  margin-bottom: -55px;
-}
-
-.header-logo { 
-    width: 115px; 
-    height: 115px; 
-    border-radius: 50%; 
-}
-
-.header-title { 
-    font-family: "Jua", sans-serif; 
-    font-size: 64px; 
-    margin: 0 auto; 
-}
-
-.header-nav { 
-    display: flex; 
-    align-items: center; 
-    gap: 40px; 
-}
-
-.logo-image {
-  aspect-ratio: 1.01;
-  object-fit: contain;
-  object-position: center;
-  width: 115px;
-  border-radius: 138px;
-  align-self: stretch;
-  flex-shrink: 0;
-  max-width: 100%;
-}
-
-.brand-name {
-  color: rgba(0, 0, 0, 1);
-  font-size: 64px;
-  text-align: center;
-  align-self: stretch;
-  margin: auto 0;
-  flex: 1;
-  width: 237px;
-}
-
-@media (max-width: 991px) {
-  .brand-name {
-    font-size: 40px;
-  }
-}
-
-.main-navigation {
-  align-self: stretch;
-  display: flex;
-  margin: auto 0;
-  align-items: flex-start;
-  gap: 40px 49px;
-  font-size: 32px;
-}
-
-@media (max-width: 991px) {
-  .main-navigation {
-    max-width: 100%;
-  }
-}
-
-.nav-link { 
-  font-size: 32px; 
-  text-decoration: none; 
-  color: #000; 
-  font-family: sans-serif;
-}
-
-.nav-icon {
-  width: 43px;
-  height: 43px;
-  object-fit: contain;
-}
-
-.login-container {
-  align-self: center;
-  margin-top: 25px;
-  width: 100%;
-  max-width: 1233px;
-  margin-left: 150px;
-}
-
-@media (max-width: 991px) {
-  .login-container {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-}
-
-.login-content {
-  gap: 20px;
-  display: flex;
-  padding-left: 250px;
-}
-
-@media (max-width: 991px) {
-  .login-content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-}
-
-.login-form-section {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  line-height: normal;
-  width: 42%;
-  margin-left: 0;
-  margin-top: -175px;
-}
-
-@media (max-width: 991px) {
-  .login-form-section {
-    width: 100%;
-  }
-}
-
-.login-form {
-  display: flex;
-  margin-top: 206px;
-  flex-direction: column;
-  align-items: stretch;
-  font-family: Jua, sans-serif;
-  font-size: 32px;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 700;
-}
-
-@media (max-width: 991px) {
-  .login-form {
-    max-width: 100%;
-    margin-top: 40px;
-  }
-}
-
-.form-label {
-  align-self: flex-start;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-
-.form-input {
-  border-radius: 71px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  margin-top: 23px;
-  height: 36px;
-  font-family: sans-serif;
-  font-size: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0.5em 0.75em;
-  outline: none;
-  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-}
-
-@media (max-width: 991px) {
-  .form-input {
-    max-width: 100%;
-  }
-}
-
-.form-label:nth-child(3) {
-  margin-top: 31px;
-}
-
-.login-button {
-  border-radius: 7px;
-  background-color: rgba(101, 161, 151, 1);
-  border: 1px solid rgba(0, 0, 0, 1);
-  align-self: center;
-  margin-top: 50px;
-  width: 242px;
-  max-width: 100%;
-  margin-bottom: 15px;
-  font-size: 24px;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: #000;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  cursor: pointer;
-}
-
-
-@media (max-width: 991px) {
-  .login-button {
-    padding: 3px 20px;
-    margin-top: 40px;
-  }
-}
-
-.login-image-section {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  line-height: normal;
-  width: 45%;
-  height: 45%;
-  margin-left: 225px;
-  margin-top: -50px;
-  margin-bottom: 65px;
-}
-
-@media (max-width: 991px) {
-  .login-image-section {
-    width: 100%;
-  }
 }
 
 .login-title {
@@ -241,21 +22,212 @@ body {
   }
 }
 
-.main-footer { 
-    background: #F5F5F5;
-    font-weight: bold; 
-    border-top: 1px solid #000; 
-    padding: 25px 0; 
-    text-align: right; 
-    padding-right: 40px;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.body {
-  background-color: rgba(227,234,244,255);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+/* Body background */
+body {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  margin: 0;
-  min-height: 100vh;
+}
+
+.page-wrapper {
+  flex: 1 1 auto;    /* ocupa todo el espacio disponible */
+  min-height: 0;     /* para que funcione el scroll interno si hiciera falta */
+  overflow-y: auto;
+}
+
+/* Header remains fixed styling */
+.main-header {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-family: Jua, sans-serif;
+  padding: 10px 5vw;
+  gap: 4vw;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  width: 10vw;
+  max-width: 115px;
+  min-width: 60px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.header-title {
+  font-family: "Jua", sans-serif;
+  font-size: 6vw;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  flex-wrap: wrap;
+}
+
+.nav-icon {
+  width: 6vw;
+  max-width: 43px;
+  min-width: 24px;
+  height: auto;
+}
+
+.nav-link {
+  font-size: 4vw;
+  text-decoration: none;
+  color: #000;
+  font-family: sans-serif;
+}
+
+/* Main login container */
+.login-container {
+  width: 90vw;
+  max-width: 800px;
+  margin: 2vh auto;
+  padding: 2vh 2vw;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: row;      /* siempre en fila */
+  flex-wrap: nowrap;        /* nada de wrap */
+  justify-content: center;  /* centro horizontal global */
+  align-items: center;      /* centro vertical */
+  gap: 5vw;                 /* más separación entre form e imagen */
+}
+
+.login-form-section {
+  flex: 1 1 45%;            /* ocupa ~45% del ancho */
+  max-width: 45%;
+}
+
+.login-image-section {
+  flex: 0 0 auto;           /* no se encoge ni crece */
+  margin-left: 3vw;         /* forzamos un poquito más de hueco */
+  display: flex;
+  justify-content: center;  /* centrado horizontal de la imagen dentro */
+  align-items: center;      /* centrado vertical */
+}
+
+@media (max-width: 600px) {
+  .login-content {
+    flex-wrap: wrap;         /* Permitimos apilar en móvil */
+  }
+  .login-form-section,
+  .login-image-section {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.login-form-section,
+.login-image-section {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1vh 1vw;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+
+.form-label {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.form-input {
+  border-radius: 71px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: auto;
+  font-family: sans-serif;
+  font-size: 2.5vw;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5em 0.75em;
+  outline: none;
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.login-button {
+  border-radius: 7px;
+  margin-top: 20px;
+  background-color: rgba(101, 161, 151, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  width: 300px;
+  height: 50px;
+  max-width: 300x;
+  min-width: unset;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  align-self: center;
+}
+
+@media (max-width: 600px) {
+  .login-content {
+    flex-wrap: wrap;
+    gap: 2vh;
+  }
+  .login-form-section,
+  .login-image-section {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .login-button {
+    width: 60vw;           /* ocupa el 60% del ancho en móvil */
+  }
+}
+
+.login-illustration {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+}
+
+.main-footer {
+  flex-shrink: 0;    /* que nunca se encoja */
+  width: 100%;
+  
+  /* alto relativo al viewport: 8vh == 8% de la altura de la ventana */
+  padding: 2vh 5vw;
+  background: #F5F5F5;
+  border-top: 1px solid #000;
+  text-align: right;
+}
+
+.logout-link {
+  font-family: sans-serif;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+/* Responsive typography fallback */
+@media (min-width: 1024px) {
+  .header-title { font-size: 64px; }
+  .nav-link { font-size: 32px; }
+  .form-label { font-size: 32px; }
+  .form-input { font-size: 20px; }
+  .login-button { font-size: 24px; }
+  .logout-link { font-size: 15px; }
 }

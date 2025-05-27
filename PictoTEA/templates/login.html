@@ -11,32 +11,37 @@
       <title>Inicio de sesion</title>
   </head>
   <body>
-    <header class="main-header"> 
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a> 
-      <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link">Pictos</a> </nav> 
-    </header>
+    
 
-    <h2 class="login-title">Login</h2>
-    <main class="login-container" data-el="div-1">
-      <div class="login-content">
-        <section class="login-form-section">
-          <form class="login-form">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-input" />
-      
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" id="password" class="form-input" />
-      
-            <button type="submit" class="login-button">Iniciar sesión</button>
-          </form>
-        </section>
-      
-        <section class="login-image-section">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/88349abe53e659a02f51d54e591bfa119e1e2bb5?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" class="login-illustration" alt="Login Illustration" />
-        </section>
-      </div>
-    </main>
+    <div class = "page-wrapper">
+      <header class="main-header"> 
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a> 
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link">Pictos</a> </nav> 
+      </header>
+
+      <h2 class="login-title">Login</h2>
+      <main class="login-container" data-el="div-1">
+        <div class="login-content">
+          <section class="login-form-section">
+            <form class="login-form">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-input" />
+        
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" id="password" class="form-input" />
+        
+              <button type="submit" class="login-button">Iniciar sesión</button>
+            </form>
+          </section>
+        
+          <section class="login-image-section">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/88349abe53e659a02f51d54e591bfa119e1e2bb5?placeholderIfAbsent=true&apiKey=1990fdc6afa74950a01ba6bbdcea8551" class="login-illustration" alt="Login Illustration" />
+          </section>
+        </div>
+      </main>
+    </div>
+    
       
     <footer class="main-footer">
       <a href="{{ url_for('register') }}" class="logout-link">Registrarse</a>
