@@ -13,28 +13,28 @@
     <div class="desktop-container"> 
       <header class="main-header"> 
         <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/9233293e785cf2d5996362ef1e325e83289fe200?placeholderIfAbsent=true" alt="Logo PictoTEA" class="header-logo" /> <h1 class="header-title"><p style = "font-family: sans-serif;"><b>PictoTEA</b></h1> <nav class="header-nav"> 
-        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="index.html" class="nav-link">Página principal</a> 
-        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="libreriaPictos.html" class="nav-link">Pictos</a> </nav> 
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/0e32348f5f5c862510f61e25587f41b98423bd7f?placeholderIfAbsent=true" alt="Icono página principal" class="nav-icon" /> <a href="{{ url_for('index') }}" class="nav-link">Página principal</a> 
+        <img src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/816f32e9d79d2195d1943e6f147b39579919548f?placeholderIfAbsent=true" alt="Icono pictos" class="nav-icon" /> <a href="{{ url_for('libreriaPictos') }}" class="nav-link">Pictos</a> </nav> 
       </header>
 
       <h2 class="page-title">Registro</h2>
       <main class="main-content">
-      
+        
         <section class="registration-section" data-el="div-1">
           <div class="content-wrapper">
             <div class="form-column">
-              <form class="registration-form">
+              <form class="registration-form" id="registerForm">
                 <label class="form-label">Nombre</label>
-                <input type="text" class="form-input" />
+                <input type="text" class="form-input" id="nombre"/>
       
                 <label class="form-label">Email</label>
-                <input type="email" class="form-input" />
+                <input type="email" class="form-input" id="mail"/>
       
                 <label class="form-label">Contraseña</label>
-                <input type="password" class="form-input" />
+                <input type="password" class="form-input" id="contrasena"/>
       
                 <label class="form-label">Repetir contraseña</label>
-                <input type="password" class="form-input" />
+                <input type="password" class="form-input" id="contrasenaRep"/>
       
                 <button type="submit" class="submit-button">Registrarse</button>
               </form>
@@ -53,6 +53,54 @@
       
       <footer class="main-footer"></footer>
     </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+    <!-- Script para validación y envío -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('registerForm');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('mail').value.trim();
+        const pass1 = document.getElementById('contrasena').value;
+        const pass2 = document.getElementById('contrasenaRep').value;
+
+        if (!nombre || !email || !pass1 || !pass2) {
+          alert('Por favor, completa todos los campos.');
+          return;
+        }
+
+        if (pass1 !== pass2) {
+          alert('Las contraseñas no coinciden.');
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append('nombre', nombre);
+        formData.append('mail', email);
+        formData.append('contrasena', pass1);
+
+        fetch('/registrarUsuario', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            alert('¡Registro exitoso!');
+            form.reset(); // Limpiar campos
+          } else {
+            alert('Ocurrió un error al registrar. Intenta de nuevo.');
+          }
+        })
+        .catch(error => {
+          console.error('Error en el registro:', error);
+          alert('Error de conexión con el servidor.');
+        });
+      });
+    });
+  </script>
   </body>
 </html>

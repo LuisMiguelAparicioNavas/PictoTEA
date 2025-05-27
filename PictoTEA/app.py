@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template, request, redirect,url_for, session
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from flask_cors import CORS
 import whisper
 import ffmpeg
@@ -7,6 +8,9 @@ import soundfile as sf
 import static.funcionesPictogramas as fp
 import json
 import hashlib
+import hashlib
+import json
+import os
 
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
 CORS(app)
@@ -91,7 +95,7 @@ def tus_frases():
 @app.route('/añadir')
 def añadir():
     if 'usuario' not in session:
-        session['next'] = url_for('login.html')
+        session['next'] = url_for('index')
         return redirect(url_for('login'))
     # aquí la lógica de “añadir” (o simplemente volver al índice)
     return redirect(url_for('home'))
