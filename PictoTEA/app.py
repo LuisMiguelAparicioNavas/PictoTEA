@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, request, redirect,url_for, session
 from flask_cors import CORS
 import whisper
 import ffmpeg
 import io
 import soundfile as sf
 import static.funcionesPictogramas as fp
+import json
+import hashlib
 
 app = Flask(__name__)  # por defecto, templates_folder="templates" y static_folder="static"
 CORS(app)
@@ -26,6 +28,73 @@ categorias = [
 
 # Carga el modelo Whisper solo una vez
 model = whisper.load_model("base")
+
+app = Flask(__name__)
+app.secret_key = 'clave_super_secreta'
+USUARIOS_PATH = 'usuarios.json'
+
+def leer_json(ruta):
+    with open(ruta, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def hash_contraseña(texto):
+    return hashlib.sha256(texto.encode('utf-8')).hexdigest()
+
+def encontrar_usuario(email, password_hash):
+    usuarios = leer_json(USUARIOS_PATH)
+    usuario_valido = None
+    # Buscamos sin return dentro del bucle
+    for u in usuarios:
+        if u.get("email") == email and u.get("contraseña") == password_hash:
+            usuario_valido = u
+    return usuario_valido
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        # Mostramos el formulario de login
+        return render_template('login.html')
+
+    # Procesamos el POST
+    email    = request.form.get('username', '').strip()
+    password = request.form.get('password', '').strip()
+
+    # Validamos que no vengan vacíos
+    if not email or not password:
+        return render_template('login.html', error='Debes completar todos los campos.')
+
+    # Hash de la contraseña y búsqueda de usuario
+    password_hash = hash_contraseña(password)
+    usuario_data  = encontrar_usuario(email, password_hash)
+
+    if usuario_data:
+        # Login OK: guardamos los datos en session
+        session['usuario'] = {
+            'email': usuario_data['email'],
+            'nombre': usuario_data['nombre']
+        }
+        # Redirigimos al destino guardado (o al home por defecto)
+        destino = session.pop('next', None)
+        return redirect(destino or url_for('index'))
+
+    # Si llegamos aquí, credenciales incorrectas
+    return render_template('login.html', error='Credenciales incorrectas')
+
+
+@app.route('/tus_frases')
+def tus_frases():
+    if 'usuario' not in session:
+        session['next'] = url_for('tus_frases')
+        return redirect(url_for('login'))
+    return render_template('tusFrases.html')
+
+@app.route('/añadir')
+def añadir():
+    if 'usuario' not in session:
+        session['next'] = url_for('login.html')
+        return redirect(url_for('login'))
+    # aquí la lógica de “añadir” (o simplemente volver al índice)
+    return redirect(url_for('home'))
 
 
 @app.route('/')

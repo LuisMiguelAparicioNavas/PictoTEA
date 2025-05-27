@@ -21,7 +21,9 @@
 
     <main class="main-content">
       <div class="content-wrapper">
-        <button class="phrases-tag"><a href="tusFrases.html" class = "enlace-tusfrases">Tus frases</button></a>
+        <form action="{{ url_for('tus_frases') }}" method="get" style="display:inline;">
+          <button type="submit" class="phrases-tag enlace-tusfrases">Tus frases</button>
+        </form>
         <h2 class="main-question">¿Qué quieres decir?</h2>
 
         <div class="phrase-display">
@@ -58,14 +60,16 @@
         </div>
 
         <div class="add-wrapper">
-          <button class="add-button">
-            <span class="add-text">Añadir</span>
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/1b26a2036eddc01c7085a3aefaf2eca7b6f9ef4a?placeholderIfAbsent=true"
-              alt="Añadir pictograma"
-              class="add-icon"
-            />
-          </button>
+          <form action="{{ url_for('añadir') }}" method="get">
+            <button type="submit" class="add-button">
+              <span class="add-text">Añadir</span>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/f0b15cc2a8ae43579bc8368b49492d98/1b26a2036eddc01c7085a3aefaf2eca7b6f9ef4a?placeholderIfAbsent=true"
+                alt="Añadir pictograma"
+                class="add-icon"
+              />
+            </button>
+          </form>
         </div>
       </div>
     </main>
