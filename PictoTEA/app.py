@@ -35,7 +35,10 @@ app.secret_key = 'clave_super_secreta'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    sesionIniciada = False
+    if "usr_id" in session:
+        sesionIniciada = True
+    return render_template('index.html', sesionIniciada=sesionIniciada)
 
 @app.route("/register")
 def register():
@@ -65,7 +68,10 @@ def tus_frases():
 
 @app.route('/libreriaPictos')
 def libreriaPictos():
-    return render_template('libreriaPictos.html')
+    sesionIniciada = False
+    if "usr_id" in session:
+        sesionIniciada = True
+    return render_template('libreriaPictos.html', sesionIniciada=sesionIniciada)
 
 @app.route('/añadir', methods=['POST'])
 def añadir():
@@ -198,7 +204,7 @@ def registrarUsuario():
 
 @app.route("/logout")
 def logout():
-    if "usuario" in session:
+    if "usr_id" in session:
         session.clear()
     return redirect(url_for('login'))
 

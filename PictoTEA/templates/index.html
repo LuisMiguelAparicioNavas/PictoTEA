@@ -77,7 +77,11 @@
     </main>
 
     <footer class="main-footer">
-      <a href="{{ url_for('logout') }}" class="logout-link">Cerrar sesión</a>
+      {% if sesionIniciada %}
+          <a href="{{ url_for('logout') }}" class="logout-link">Cerrar sesión</a>
+      {% else %}
+          <a href="{{ url_for('login') }}" class="logout-link">Iniciar sesión</a>
+      {% endif %}
     </footer>
   </div>
 
