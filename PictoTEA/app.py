@@ -32,23 +32,10 @@ model = whisper.load_model("base")
 
 app = Flask(__name__)
 app.secret_key = 'clave_super_secreta'
-USUARIOS_PATH = './data/users.json'
 
-def leer_json(ruta):
-    with open(ruta, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-def hash_contraseña(texto):
-    return hashlib.sha256(texto.encode('utf-8')).hexdigest()
-
-def encontrar_usuario(email, password_hash):
-    usuarios = leer_json(USUARIOS_PATH)
-    usuario_valido = None
-    # Buscamos sin return dentro del bucle
-    for u in usuarios:
-        if u.get("email") == email and u.get("contraseña") == password_hash:
-            usuario_valido = u
-    return usuario_valido
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route("/register")
 def register():
@@ -56,58 +43,78 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'GET':
-        # Mostramos el formulario de login
-        return render_template('login.html')
-
-    # Procesamos el POST
-    email    = request.form.get('username', '').strip()
-    password = request.form.get('password', '').strip()
-
-    # Validamos que no vengan vacíos
-    if not email or not password:
-        return render_template('login.html', error='Debes completar todos los campos.')
-
-    # Hash de la contraseña y búsqueda de usuario
-    password_hash = hash_contraseña(password)
-    usuario_data  = encontrar_usuario(email, password_hash)
-
-    if usuario_data:
-        # Login OK: guardamos los datos en session
-        session['usuario'] = {
-            'email': usuario_data['email'],
-            'nombre': usuario_data['nombre']
-        }
-        # Redirigimos al destino guardado (o al home por defecto)
-        destino = session.pop('next', None)
-        return redirect(destino or url_for('index'))
-
-    # Si llegamos aquí, credenciales incorrectas
-    return render_template('login.html', error='Credenciales incorrectas')
-
+    return render_template('login.html')
 
 @app.route('/tus_frases')
 def tus_frases():
-    if 'usuario' not in session:
-        session['next'] = url_for('tus_frases')
-        return redirect(url_for('login'))
     return render_template('tusFrases.html')
-
-@app.route('/añadir')
-def añadir():
-    if 'usuario' not in session:
-        session['next'] = url_for('index')
-        return redirect(url_for('login'))
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 
 @app.route('/libreriaPictos')
 def libreriaPictos():
     return render_template('libreriaPictos.html')
+
+@app.route('/añadir', methods=['POST'])
+def añadir():
+    if 'usr_id' not in session:
+        return jsonify({"error": "no_session"}), 401
+
+    usr_id = session['usr_id']
+    frases_total = {}
+
+    # Leer archivo de frases si existe
+    if os.path.exists("data/frases.json"):
+        with open("data/frases.json", "r") as j:
+            try:
+                frases_total = json.load(j)
+            except json.JSONDecodeError:
+                frases_total = {}
+
+    # Obtener pictogramas enviados por POST
+    data = request.get_json()
+    pictogramas = data.get("pictogramas", [])
+
+    # Validación simple
+    if not pictogramas or not isinstance(pictogramas, list):
+        return jsonify({"error": "Datos inválidos"}), 400
+
+    # Asegurar estructura para el usuario
+    if usr_id not in frases_total:
+        frases_total[usr_id] = []
+
+    # Añadir nueva frase del usuario
+    frases_total[usr_id].append(pictogramas)
+
+    # Guardar en archivo
+    with open("data/frases.json", "w") as f:
+        json.dump(frases_total, f, indent=2)
+
+    return jsonify({"mensaje": "Frase añadida correctamente"}), 200
+
+@app.route('/autenticar', methods=["POST"])
+def autenticar():
+    mail = request.form.get('email')
+    password = str(request.form.get('password'))
+    hashed_pass = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    usuarios = []
+
+    if os.path.exists("data/users.json"):
+        with open("data/users.json", "r") as j:
+            try:
+                usuarios = json.load(j)
+            except json.JSONDecodeError:
+                usuarios = []
+    
+    usuario = next((d for d in usuarios if d.get("mail") == mail and d.get("pass") == hashed_pass), None)
+    
+    print (usuario)
+    if usuario:
+        session["usr_id"] = usuario["id"]
+        if "usr_id" in session:
+            print("Se ha guardado en la variable de sesion")
+        return jsonify({"success": True, "message": "Login exitoso"}), 200
+    else:
+        return jsonify({"success": False, "message": "Contraseña o email incorrectos"}), 401
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
@@ -145,6 +152,12 @@ def pictogramas():
     #Devolver resultados tipo JSON
     return jsonify(resultados)
 
+@app.route("/redirigir1")
+def redirigir1():
+    if 'usr_id' not in session:
+        return redirect(url_for('login'))
+    else:
+        return redirect(url_for('tus_frases'))
 
 @app.route("/registrarUsuario", methods=["POST"])
 def registrarUsuario():
@@ -152,9 +165,6 @@ def registrarUsuario():
     mail = request.form.get('mail')
     contrasena = str(request.form.get('contrasena'))
     
-    hashed_pass = hashlib.sha256(contrasena.encode('utf-8')).hexdigest()
-    datosUsuario = {"nombre": str(nombre), "mail": str(mail), "pass" : hashed_pass}
-
     usuarios = []
     if os.path.exists("data/users.json"):
         with open("data/users.json", "r") as j:
@@ -163,6 +173,8 @@ def registrarUsuario():
             except json.JSONDecodeError:
                 usuarios = []
 
+    hashed_pass = hashlib.sha256(contrasena.encode('utf-8')).hexdigest()
+    datosUsuario = {"id": len(usuarios) + 1,"nombre": str(nombre), "mail": str(mail), "pass" : hashed_pass}
     usuarios.append(datosUsuario)
 
     with open("data/users.json", "w") as j:

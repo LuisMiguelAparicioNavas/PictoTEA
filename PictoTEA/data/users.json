@@ -1,12 +1,8 @@
 [
   {
+    "id": 1,
     "nombre": "Luis Miguel",
     "mail": "test@gmail.com",
-    "pass": "dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91"
-  },
-  {
-    "nombre": "Juan",
-    "mail": "test2@gmail.com",
     "pass": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
   }
 ]
