@@ -66,7 +66,7 @@
       </main>
 
       <footer class="main-footer">
-        <a href="{{ url_for('logout') }}" class="logout-link">Cerrar sesión</a>
+        <a href="{{ url_for('logout') }}" class="logout-link" id="cerrarSesion">Cerrar sesión</a>
       </footer>
     </div>
 
@@ -75,5 +75,34 @@
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const cerrarSesion = document.getElementById("cerrarSesion")
+      if(cerrarSesion){
+        cerrarSesion.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        try {
+            const resp = await fetch('/logout', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            const data = await resp.json();
+            
+            if (data.success) {
+              alert(data.message);
+              window.location.href = '/login';
+            } else {
+              alert('Error al cerrar sesión: ' + data.message);
+            }
+        } catch (err) {
+          console.error('Error al cerrar sesión:', err);
+          alert('Error al cerrar sesión');
+        }
+      });
+      }
+    </script>
   </body>
 </html>

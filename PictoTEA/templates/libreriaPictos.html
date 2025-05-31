@@ -64,9 +64,9 @@
 
       <footer class="main-footer">
         {% if sesionIniciada %}
-          <a href="{{ url_for('logout') }}" class="logout-link">Cerrar sesión</a>
+          <a href="{{ url_for('logout') }}" class="logout-link" id="cerrarSesion">Cerrar sesión</a>
         {% else %}
-          <a href="{{ url_for('login') }}" class="logout-link">Iniciar sesión</a>
+          <a href="{{ url_for('login') }}" class="logout-link" id="ininciarSesion">Iniciar sesión</a>
         {% endif %}
       </footer>
     </div>
@@ -75,6 +75,7 @@
     <script>
       const pictogramGrid = document.querySelector(".pictogram-grid");
       const categoryInputs = document.querySelectorAll('input[name="category"]');
+      const cerrarSesion = document.getElementById("cerrarSesion");
 
       // Función para crear pictograma - EXACTAMENTE IGUAL QUE EN EL INDEX
       function createPictograma(palabra, url){
@@ -155,6 +156,33 @@
       document.addEventListener('DOMContentLoaded', () => {
         mostrarPictogramas(0);
       });
+
+      if(cerrarSesion){
+        cerrarSesion.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        try {
+            const resp = await fetch('/logout', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            const data = await resp.json();
+            
+            if (data.success) {
+              alert(data.message);
+              window.location.href = '/login';
+            } else {
+              alert('Error al cerrar sesión: ' + data.message);
+            }
+        } catch (err) {
+          console.error('Error al cerrar sesión:', err);
+          alert('Error al cerrar sesión');
+        }
+      });
+      }
     </script>
   </body>
 </html>

@@ -95,6 +95,10 @@
     const btnTusFrases = document.getElementById("btnTusFrases");
     const cerrarSesion = document.getElementById("cerrarSesion");
 
+    document.addEventListener('DOMContentLoaded', () => {
+      pictogramGrid.innerHTML = '';
+  });
+
     function createPictograma(palabra, url){
       const div = document.createElement('div');
       div.className = 'cuadrado-verde';
@@ -234,9 +238,13 @@
         window.location.href = '/login'; // Redirigir manualmente
         return;
       }
-
-      const data = await resp.json();
-      alert(data.mensaje || 'Frase guardada');
+      if(pictogramGrid.innerHTML === ''){
+        alert('ERROR: No hay pictograma para guardar')
+      }else{
+        const data = await resp.json();
+        alert(data.mensaje || 'Frase guardada');
+      }
+      
       } catch (err) {
         console.error('Error al enviar pictogramas:', err);
         alert('Error al guardar frase');
