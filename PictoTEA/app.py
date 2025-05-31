@@ -202,11 +202,12 @@ def registrarUsuario():
 
     return "Registro exitoso", 200
 
-@app.route("/logout")
+@app.route("/logout", methods=['POST'])
 def logout():
     if "usr_id" in session:
         session.clear()
-    return redirect(url_for('login'))
+        return jsonify({"success": True, "message": "Sesión cerrada correctamente"}), 200
+    return jsonify({"success": False, "message": "No había sesión activa"}), 400
 
 @app.route("/get_categoria", methods=['POST'])
 def get_categoria():

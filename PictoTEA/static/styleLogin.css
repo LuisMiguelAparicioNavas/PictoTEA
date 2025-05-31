@@ -6,7 +6,7 @@ html, body {
 }
 
 .login-title {
-  font-size: 70px;
+  font-size: 50px;
   color: rgba(0, 0, 0, 1);
   font-weight: bold;
   text-align: center;
@@ -113,8 +113,7 @@ body {
 }
 
 .login-image-section {
-  flex: 0 0 auto;           /* no se encoge ni crece */
-  margin-left: 3vw;         /* forzamos un poquito más de hueco */
+  flex: 1;           /* no se encoge ni crece */
   display: flex;
   justify-content: center;  /* centrado horizontal de la imagen dentro */
   align-items: center;      /* centrado vertical */
@@ -131,8 +130,7 @@ body {
   }
 }
 
-.login-form-section,
-.login-image-section {
+.login-form-section{
   flex: 1 1 300px;
   display: flex;
   flex-direction: column;
@@ -200,9 +198,8 @@ body {
 }
 
 .login-illustration {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  max-width: 400px;
 }
 
 .main-footer {
